@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Johan Torres · Mundo Frank&#x27;s Hotdogs</title>
+<meta name="description" content="Johan Torres · diseño de marca × desarrollo web. Marcas con riesgo, construidas con ingeniería.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Johan Torres · Mundo Frank&#x27;s Hotdogs">
+<meta property="og:description" content="Johan Torres · diseño de marca × desarrollo web. Marcas con riesgo, construidas con ingeniería.">
+<meta property="og:image" content="../og.png">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#101216">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&amp;family=Anton&amp;family=Archivo:wght@400;500;600;700;800;900&amp;family=DM+Serif+Display:ital@0;1&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Bangers&amp;display=swap">
+<style>
+:root{--red:#D62828;--red-deep:#A81E1E;--mustard:#F6BE00;--cream:#FFF4E0;--char:#1A1411;--char-soft:#3A322C;--relish:#4C9A2A;--sunset:#E76F2A;--text-muted:#8A8172;--line-on-cream:rgba(26,20,17,.12);--surface-card:#FFFFFF;--font-display:'Bagel Fat One',system-ui,cursive;--font-poster:'Anton','Arial Narrow',sans-serif;--font-body:'Archivo',system-ui,sans-serif;--font-serif-i:'DM Serif Display',Georgia,serif;--radius-md:12px;--radius-lg:18px;--radius-xl:26px;--radius-pill:999px;--shadow-sticker:4px 4px 0 var(--char)}
+body{margin:0;background:#FFF4E0}
+a{color:#D62828}a:hover{color:#A81E1E}
+@keyframes heroIn{from{opacity:0;transform:translateY(22px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes barGrow{from{width:0}to{width:100%}}
+.fr-add:active{transform:translate(2px,2px);box-shadow:none !important}
+.fr-chips::-webkit-scrollbar{display:none}
+@media (max-width: 860px){
+.fr-g2{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+.fr-g1{grid-template-columns:minmax(0,1fr) !important}
+.fr-mood{grid-template-columns:repeat(2,minmax(0,1fr)) !important;grid-template-rows:none !important;grid-auto-rows:220px !important}
+.fr-mood>div{grid-row:auto !important;grid-column:auto !important}
+.fr-board-cols{grid-template-columns:minmax(0,1fr) !important}
+.fr-board-cols>div+div{border-left:0 !important;border-top:2px dashed rgba(255,244,224,.16)}
+.fr-journey-line{display:none !important}
+}
+</style>
+<style>
+.jt-bar{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:9999;display:flex;gap:6px;align-items:center;padding:6px;border-radius:999px;background:rgba(16,18,22,.86);border:1px solid #2A2D35;box-shadow:0 14px 34px -14px rgba(0,0,0,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font:500 12px "IBM Plex Mono",ui-monospace,Menlo,monospace}
+.jt-bar a{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border-radius:999px;color:#E4E6EA;text-decoration:none}
+.jt-bar a:hover{color:#2FD8C5}
+.jt-bar a[aria-current]{background:#2FD8C5;color:#05211D}
+.jt-bar .jt-3d{background:#2FD8C5;color:#05211D;font-weight:500}
+.jt-bar .jt-3d:hover{color:#05211D;filter:brightness(1.08)}
+@media print{.jt-bar{display:none}}
+</style>
+</head>
+<body>
+<div id="dc-root"><div class="sc-host" data-sc-name="Mundo-Franks"><div style="background: rgb(255, 244, 224); color: rgb(26, 20, 17); font-family: Archivo, &quot;Helvetica Neue&quot;, Arial, sans-serif; font-size: 17px; line-height: 1.55;">
+
+  
+  <nav style="background: rgb(21, 23, 28); color: rgb(228, 230, 234); padding-inline: clamp(16px, 4vw, 56px); padding-block: 14px;">
+    <div style="max-width: 1280px; margin: 0px auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;">
+      <a href="./" style="display: flex; align-items: center; gap: 12px; color: rgb(228, 230, 234); text-decoration: none; min-height: 44px;">
+        <svg width="26" height="26" viewBox="0 0 200 200" aria-hidden="true"><rect x="20" y="20" width="160" height="40" fill="#E4E6EA"></rect><rect x="100" y="60" width="40" height="120" fill="#E4E6EA"></rect><rect x="20" y="140" width="80" height="40" fill="#E4E6EA"></rect><rect x="20" y="100" width="40" height="40" fill="#D62828"></rect></svg>
+        <span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px;">← Volver a la estación</span>
+      </a>
+      <div style="display: flex; align-items: center; gap: 10px; font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(183, 187, 195);">
+        <span style="width: 10px; height: 10px; border-radius: 50%; background: rgb(214, 40, 40); display: inline-block;"></span>
+        Mundo 03 / 04 · Frank's Hotdogs
+      </div>
+    </div>
+  </nav>
+
+  
+  <header style="background: rgb(214, 40, 40); color: rgb(255, 244, 224); padding-inline: clamp(16px, 4vw, 56px); padding-block: 64px 0px;">
+    <div style="max-width: 1280px; margin: 0px auto; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end;">
+      <div style="flex: 3 1 560px; min-width: 0px; display: flex; flex-direction: column; gap: 20px; padding-bottom: 56px;">
+        <span style="align-self: flex-start; padding: 6px 14px; border-radius: 999px; background: rgb(246, 190, 0); color: rgb(26, 20, 17); font-weight: 800; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;">Caso de marca · Pietà, Malta · 2026</span>
+        <h1 style="margin: 0px; font-family: &quot;Bagel Fat One&quot;, &quot;Arial Black&quot;, sans-serif; font-weight: 400; font-size: clamp(64px, 9vw, 136px); line-height: 0.9;">Hotdogs with Attitude.</h1>
+        <div style="font-family: &quot;DM Serif Display&quot;, serif; font-style: italic; font-size: 30px; color: rgb(246, 190, 0);">Everyone loves a good hot dog.</div>
+        <p style="margin: 0px; font-size: 19px; max-width: 54ch;">Un puesto de hot dogs en Pietà con clientes felices y una marca dispersa. Le hice la estrategia, la identidad con Frankie, un sistema de diseño y las pantallas para pedir: app de delivery, carta del local y una pantalla interactiva.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px 12px; font-weight: 800; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase;">
+          <span>Estrategia</span><span style="color: rgb(246, 190, 0);">/</span><span>Identidad</span><span style="color: rgb(246, 190, 0);">/</span><span>Sistema de diseño</span><span style="color: rgb(246, 190, 0);">/</span><span>Digital</span><span style="color: rgb(246, 190, 0);">/</span><span>Contenido</span>
+        </div>
+      </div>
+      <div style="flex: 2 1 340px; min-width: 0px; display: flex; justify-content: center; padding-bottom: 40px;">
+        <figure style="margin: 0px; width: 100%; max-width: 360px; padding: 12px 12px 14px; border-radius: 22px; background: rgb(255, 244, 224); box-shadow: rgba(26, 20, 17, 0.35) 0px 24px 48px; transform: rotate(3deg); display: flex; flex-direction: column; gap: 10px;">
+          <img src="../assets/e6855ee4e0dcac53f43d8334ba5e3460.jpg" alt="Clienta con un hot dog y una bebida naranja bajo el sol de Malta" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 30%; border-radius: 14px; display: block;">
+          <figcaption style="font-family: &quot;DM Serif Display&quot;, serif; font-style: italic; font-size: 18px; color: rgb(214, 40, 40); text-align: center;">Hard sun, red everywhere.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </header>
+  <div style="height: 18px; background-color: rgb(255, 244, 224); background-image: repeating-linear-gradient(90deg, rgb(214, 40, 40) 0px, rgb(214, 40, 40) 18px, rgb(255, 244, 224) 18px, rgb(255, 244, 224) 36px);"></div>
+
+  <div style="padding-inline: clamp(16px, 4vw, 56px); padding-block: 48px 80px;">
+  <div style="max-width: 1280px; margin: 0px auto; display: flex; flex-direction: column; gap: 112px;">
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+      <div style="flex: 1 1 260px; min-width: 0px; padding: 16px 20px; border-radius: 16px; background: rgb(255, 255, 255); border: 2px solid rgb(26, 20, 17);"><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(107, 90, 78);">Mi rol</div><div style="font-weight: 700;">Estrategia, identidad y producto digital</div></div>
+      <div style="flex: 1 1 160px; min-width: 0px; padding: 16px 20px; border-radius: 16px; background: rgb(255, 255, 255); border: 2px solid rgb(26, 20, 17);"><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(107, 90, 78);">Año</div><div style="font-weight: 700;">2026</div></div>
+      <div style="flex: 1 1 260px; min-width: 0px; padding: 16px 20px; border-radius: 16px; background: rgb(255, 255, 255); border: 2px solid rgb(26, 20, 17);"><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(107, 90, 78);">Herramientas</div><div style="font-weight: 700;">Claude Design · ChatGPT · OpenArt</div></div>
+      <div style="flex: 1 1 260px; min-width: 0px; padding: 16px 20px; border-radius: 16px; background: rgb(255, 255, 255); border: 2px solid rgb(26, 20, 17);"><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(107, 90, 78);">Fotografía</div><div style="font-weight: 700;">Kevin Cano</div></div>
+    </div>
+
+    
+    <nav aria-label="Capítulos de este mundo" class="fr-g2" style="display: grid; grid-template-columns: repeat(6, minmax(0px, 1fr)); gap: 10px;">
+      <a href="#reto" style="display: flex; flex-direction: column; gap: 2px; padding: 16px 18px; border-radius: 16px; background: rgb(214, 40, 40); color: rgb(255, 244, 224); text-decoration: none;"><span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(246, 190, 0);">01</span><span style="font-family: Anton, sans-serif; font-size: 22px; line-height: 1.1; text-transform: uppercase;">El reto</span></a>
+      <a href="#estrategia" style="display: flex; flex-direction: column; gap: 2px; padding: 16px 18px; border-radius: 16px; background: rgb(246, 190, 0); color: rgb(26, 20, 17); text-decoration: none;"><span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(214, 40, 40);">02</span><span style="font-family: Anton, sans-serif; font-size: 22px; line-height: 1.1; text-transform: uppercase;">Estrategia</span></a>
+      <a href="#frankie" style="display: flex; flex-direction: column; gap: 2px; padding: 16px 18px; border-radius: 16px; background: rgb(255, 255, 255); border: 2px solid rgb(26, 20, 17); color: rgb(26, 20, 17); text-decoration: none;"><span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(214, 40, 40);">03</span><span style="font-family: Anton, sans-serif; font-size: 22px; line-height: 1.1; text-transform: uppercase;">Frankie</span></a>
+      <a href="#sistema" style="display: flex; flex-direction: column; gap: 2px; padding: 16px 18px; border-radius: 16px; background: rgb(26, 20, 17); color: rgb(255, 244, 224); text-decoration: none;"><span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(246, 190, 0);">04</span><span style="font-family: Anton, sans-serif; font-size: 22px; line-height: 1.1; text-transform: uppercase;">Sistema</span></a>
+      <a href="#digital" style="display: flex; flex-direction: column; gap: 2px; padding: 16px 18px; border-radius: 16px; background: rgb(76, 154, 42); color: rgb(255, 244, 224); text-decoration: none;"><span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(246, 190, 0);">05</span><span style="font-family: Anton, sans-serif; font-size: 22px; line-height: 1.1; text-transform: uppercase;">Pedir</span></a>
+      <a href="#aplicaciones" style="display: flex; flex-direction: column; gap: 2px; padding: 16px 18px; border-radius: 16px; background: rgb(231, 111, 42); color: rgb(26, 20, 17); text-decoration: none;"><span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(255, 244, 224);">06</span><span style="font-family: Anton, sans-serif; font-size: 22px; line-height: 1.1; text-transform: uppercase;">Aplicaciones</span></a>
+    </nav>
+    </div>
+
+    
+    <section id="reto" style="display: flex; flex-direction: column; gap: 28px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: flex-end; border-top: 4px solid rgb(26, 20, 17); padding-top: 20px;">
+        <span style="font-family: &quot;Bagel Fat One&quot;, sans-serif; font-size: 96px; line-height: 0.8; color: rgb(214, 40, 40);">01</span>
+        <div style="flex: 1 1 420px; min-width: 0px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(107, 90, 78);">Capítulo · El reto y la idea</div>
+          <h2 style="margin: 0px; font-family: &quot;Bagel Fat One&quot;, sans-serif; font-weight: 400; font-size: clamp(36px, 4.2vw, 56px); line-height: 1;">Un producto querido, una marca dispersa.</h2>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 28px;">
+        <div style="flex: 1 1 340px; min-width: 0px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="background: rgb(26, 20, 17); border-radius: 20px; padding: 22px 26px; display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 18px; box-shadow: rgb(214, 40, 40) 6px 6px 0px;"><span style="font-family: Anton, sans-serif; font-size: 64px; line-height: 1; color: rgb(246, 190, 0);">5.0★</span><span style="font-weight: 700; font-size: 18px; color: rgb(255, 244, 224);">Google · 27 reseñas</span></div>
+          <div style="background: rgb(26, 20, 17); border-radius: 20px; padding: 22px 26px; display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 18px; box-shadow: rgb(214, 40, 40) 6px 6px 0px;"><span style="font-family: Anton, sans-serif; font-size: 64px; line-height: 1; color: rgb(246, 190, 0);">9/10</span><span style="font-weight: 700; font-size: 18px; color: rgb(255, 244, 224);">Wolt · 20 reseñas</span></div>
+        </div>
+        <ol style="flex: 1.2 1 420px; min-width: 0px; margin: 0px; padding: 0px; list-style: none; display: flex; flex-direction: column; justify-content: center; gap: 14px;">
+          <li style="display: flex; gap: 18px; align-items: baseline;"><span style="font-family: Anton, sans-serif; font-size: 30px; color: rgb(214, 40, 40);">01</span><span style="font-weight: 700; font-size: 22px; line-height: 1.3;">Dos cuentas en redes y unos 540 seguidores</span></li>
+          <li style="display: flex; gap: 18px; align-items: baseline;"><span style="font-family: Anton, sans-serif; font-size: 30px; color: rgb(214, 40, 40);">02</span><span style="font-weight: 700; font-size: 22px; line-height: 1.3;">Precios distintos en el local y en Wolt</span></li>
+          <li style="display: flex; gap: 18px; align-items: baseline;"><span style="font-family: Anton, sans-serif; font-size: 30px; color: rgb(214, 40, 40);">03</span><span style="font-weight: 700; font-size: 22px; line-height: 1.3;">Una historia vieja de "no hay dónde sentarse"</span></li>
+          <li style="display: flex; gap: 18px; align-items: baseline;"><span style="font-family: Anton, sans-serif; font-size: 30px; color: rgb(214, 40, 40);">04</span><span style="font-weight: 700; font-size: 22px; line-height: 1.3;">Casi nada de contenido que atraiga gente nueva</span></li>
+        </ol>
+      </div>
+      <div style="font-family: &quot;DM Serif Display&quot;, serif; font-style: italic; font-size: clamp(24px, 2.6vw, 34px); color: rgb(214, 40, 40);">El problema era alcance y consistencia, no calidad.</div>
+      <div style="display: flex; flex-wrap: wrap; border-radius: 26px; overflow: hidden; background: rgb(26, 20, 17); color: rgb(255, 244, 224);">
+        <div style="flex: 1.3 1 420px; min-width: 0px; padding: clamp(24px, 4vw, 48px); display: flex; flex-direction: column; gap: 18px;">
+          <span style="font-weight: 900; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgb(246, 190, 0);">La idea</span>
+          <div style="font-family: &quot;Bagel Fat One&quot;, sans-serif; font-size: clamp(32px, 3.6vw, 48px); line-height: 0.95;">Un hot dog es una máquina pequeña y perfecta.</div>
+          <p style="margin: 0px; font-size: 18px; color: rgba(255, 244, 224, 0.78); max-width: 52ch;">Pan, salchicha, calor, crujiente y salsa. Frank's no pretende ser otra cosa: solo no hace mal ninguna parte. La marca viste esa honestidad con un mundo soleado y descarado.</p>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 6px;">
+            <span style="font-weight: 900; font-size: 14px; text-transform: uppercase; background: rgb(214, 40, 40); padding: 8px 16px; border-radius: 999px;">Caricatura groovy</span>
+            <span style="font-family: Anton, sans-serif; font-size: 26px; color: rgb(246, 190, 0);">+</span>
+            <span style="font-weight: 900; font-size: 14px; text-transform: uppercase; background: rgb(214, 40, 40); padding: 8px 16px; border-radius: 999px;">Diner americano</span>
+            <span style="font-family: Anton, sans-serif; font-size: 26px; color: rgb(246, 190, 0);">+</span>
+            <span style="font-weight: 900; font-size: 14px; text-transform: uppercase; background: rgb(214, 40, 40); padding: 8px 16px; border-radius: 999px;">Verano maltés</span>
+          </div>
+          <div style="font-family: Anton, sans-serif; font-size: clamp(24px, 2.6vw, 34px); text-transform: uppercase; color: rgb(246, 190, 0); line-height: 1.1;">= Mediterranean Retro Street Diner</div>
+        </div>
+        <img src="../assets/a6f73aa3bdaeee01b3c931b1b6f74736.jpg" alt="Cliente mordiendo un hot dog al aire libre en Malta" style="flex: 1 1 320px; min-width: 0px; width: 100%; min-height: 360px; object-fit: cover; display: block;">
+      </div>
+    </section>
+
+    
+    <section id="estrategia" style="display: flex; flex-direction: column; gap: 28px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: flex-end; border-top: 4px solid rgb(26, 20, 17); padding-top: 20px;">
+        <span style="font-family: &quot;Bagel Fat One&quot;, sans-serif; font-size: 96px; line-height: 0.8; color: rgb(246, 190, 0); -webkit-text-stroke: 2px rgb(26, 20, 17);">02</span>
+        <div style="flex: 1 1 420px; min-width: 0px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(107, 90, 78);">Capítulo · Estrategia de marca</div>
+          <h2 style="margin: 0px; font-family: &quot;Bagel Fat One&quot;, sans-serif; font-weight: 400; font-size: clamp(36px, 4.2vw, 56px); line-height: 1;">El hot dog callejero de Malta, con carácter.</h2>
+        </div>
+      </div>
+      <div class="fr-g2" style="display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 18px;">
+        <div style="background: rgb(214, 40, 40); color: rgb(255, 244, 224); border-radius: 22px; padding: 26px; box-shadow: rgb(26, 20, 17) 5px 5px 0px; display: flex; flex-direction: column; gap: 12px;"><span style="font-family: Anton, sans-serif; font-size: 26px; text-transform: uppercase; color: rgb(246, 190, 0);">Propósito</span><span style="font-size: 18px; line-height: 1.4;">Ser el hot dog favorito de Malta a cualquier hora: de día, en la playa o de madrugada.</span></div>
+        <div style="background: rgb(255, 255, 255); border-radius: 22px; padding: 26px; box-shadow: rgb(26, 20, 17) 5px 5px 0px; border: 2px solid rgb(26, 20, 17); display: flex; flex-direction: column; gap: 12px;"><span style="font-family: Anton, sans-serif; font-size: 26px; text-transform: uppercase; color: rgb(214, 40, 40);">Posicionamiento</span><span style="font-size: 18px; line-height: 1.4;">Ni gourmet pretencioso ni comida rápida sin alma. Rico, divertido y para compartir.</span></div>
+        <div style="background: rgb(255, 255, 255); border-radius: 22px; padding: 26px; box-shadow: rgb(26, 20, 17) 5px 5px 0px; border: 2px solid rgb(26, 20, 17); display: flex; flex-direction: column; gap: 12px;"><span style="font-family: Anton, sans-serif; font-size: 26px; text-transform: uppercase; color: rgb(214, 40, 40);">Público</span><span style="font-size: 18px; line-height: 1.4;">Locales de 18 a 35, expats de Sliema, Gżira y Msida, turistas de verano y antojos nocturnos.</span></div>
+        <div style="background: rgb(246, 190, 0); border-radius: 22px; padding: 26px; box-shadow: rgb(26, 20, 17) 5px 5px 0px; display: flex; flex-direction: column; gap: 12px;"><span style="font-family: Anton, sans-serif; font-size: 26px; text-transform: uppercase;">Valor</span><span style="font-size: 18px; line-height: 1.4;">Hot dogs honestos, una salsa que engancha y una marca que da ganas de fotografiar.</span></div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+        <span style="font-weight: 900; font-size: 15px; text-transform: uppercase; color: rgb(255, 244, 224); background: rgb(26, 20, 17); padding: 10px 20px; border-radius: 999px;">Tasty honesty</span>
+        <span style="font-weight: 900; font-size: 15px; text-transform: uppercase; color: rgb(255, 244, 224); background: rgb(26, 20, 17); padding: 10px 20px; border-radius: 999px;">Attitude</span>
+        <span style="font-weight: 900; font-size: 15px; text-transform: uppercase; color: rgb(255, 244, 224); background: rgb(26, 20, 17); padding: 10px 20px; border-radius: 999px;">Closeness</span>
+        <span style="font-weight: 900; font-size: 15px; text-transform: uppercase; color: rgb(255, 244, 224); background: rgb(26, 20, 17); padding: 10px 20px; border-radius: 999px;">Consistency</span>
+        <span style="font-weight: 900; font-size: 15px; text-transform: uppercase; color: rgb(255, 244, 224); background: rgb(26, 20, 17); padding: 10px 20px; border-radius: 999px;">Endless summer</span>
+      </div>
+    </section>
+
+    
+    <section id="frankie" style="display: flex; flex-direction: column; gap: 28px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: flex-end; border-top: 4px solid rgb(26, 20, 17); padding-top: 20px;">
+        <span style="font-family: &quot;Bagel Fat One&quot;, sans-serif; font-size: 96px; line-height: 0.8; color: rgb(214, 40, 40);">03</span>
+        <div style="flex: 1 1 420px; min-width: 0px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(107, 90, 78);">Capítulo · El personaje</div>
+          <h2 style="margin: 0px; font-family: &quot;Bagel Fat One&quot;, sans-serif; font-weight: 400; font-size: clamp(36px, 4.2vw, 56px); line-height: 1;">Frankie lleva la marca.</h2>
+          <p style="margin: 0px; max-width: 64ch; color: rgb(74, 59, 50);">El dueño convertido en hot dog. Relajado y descarado: ojos entrecerrados, media sonrisa, siempre saludando. Funciona en una tinta y en negativo.</p>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: stretch;">
+        <div style="flex: 1 1 380px; min-width: 0px; min-height: 360px; border: 4px solid rgb(26, 20, 17); border-radius: 26px; background: conic-gradient(rgb(214, 40, 40) 90deg, rgb(255, 244, 224) 0deg, rgb(255, 244, 224) 180deg, rgb(214, 40, 40) 0deg, rgb(214, 40, 40) 270deg, rgb(255, 244, 224) 0deg) 0% 0% / 56px 56px; display: flex; align-items: center; justify-content: center; padding: 28px;">
+          <div style="background: rgb(255, 244, 224); border-radius: 22px; padding: 28px; box-shadow: rgb(26, 20, 17) 7px 7px 0px; width: 78%; max-width: 380px;"><img src="../assets/bd2e0fe341dfa414cc8474763189eb5e.png" alt="Frankie, el hot dog mascota, caminando y saludando" style="width: 100%; display: block;"></div>
+        </div>
+        <div style="flex: 1.4 1 520px; min-width: 0px; display: flex; flex-direction: column; gap: 14px;">
+          <div class="fr-g2" style="display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 12px;">
+            <div style="aspect-ratio: 1 / 1; background: rgb(255, 255, 255); border-radius: 18px; border: 2px solid rgb(26, 20, 17); display: flex; align-items: center; justify-content: center; padding: 14px;"><img src="../assets/ac447d3deda09aa46f29f5e25732b9fb.png" alt="Logo principal: Frankie con el texto Frank's Hotdogs en arco" style="max-width: 100%; max-height: 100%; display: block;"></div>
+            <div style="aspect-ratio: 1 / 1; background: rgb(255, 255, 255); border-radius: 18px; border: 2px solid rgb(26, 20, 17); display: flex; align-items: center; justify-content: center; padding: 14px;"><img src="../assets/bd2e0fe341dfa414cc8474763189eb5e.png" alt="Isotipo de Frankie" style="max-width: 100%; max-height: 100%; display: block;"></div>
+            <div style="aspect-ratio: 1 / 1; background: rgb(255, 255, 255); border-radius: 18px; border: 2px solid rgb(26, 20, 17); display: flex; align-items: center; justify-content: center; padding: 14px;"><svg viewBox="0 0 200 200" role="img" aria-label="Monograma F en flor" style="width: 86%; height: auto;"><circle cx="100" cy="100" r="74" fill="#D62828"></circle><circle cx="172" cy="100" r="21" fill="#D62828"></circle><circle cx="162" cy="136" r="21" fill="#D62828"></circle><circle cx="136" cy="162" r="21" fill="#D62828"></circle><circle cx="100" cy="172" r="21" fill="#D62828"></circle><circle cx="64" cy="162" r="21" fill="#D62828"></circle><circle cx="38" cy="136" r="21" fill="#D62828"></circle><circle cx="28" cy="100" r="21" fill="#D62828"></circle><circle cx="38" cy="64" r="21" fill="#D62828"></circle><circle cx="64" cy="38" r="21" fill="#D62828"></circle><circle cx="100" cy="28" r="21" fill="#D62828"></circle><circle cx="136" cy="38" r="21" fill="#D62828"></circle><circle cx="162" cy="64" r="21" fill="#D62828"></circle><text x="100" y="134" text-anchor="middle" font-family="Bagel Fat One" font-size="110" fill="#FFF4E0">F</text></svg></div>
+            <div style="aspect-ratio: 1 / 1; background: rgb(214, 40, 40); border-radius: 18px; border: 2px solid rgb(26, 20, 17); display: flex; align-items: center; justify-content: center; padding: 14px;"><img src="../assets/ac447d3deda09aa46f29f5e25732b9fb.png" alt="Logo en negativo sobre rojo" style="max-width: 100%; max-height: 100%; display: block; filter: brightness(0) invert(1);"></div>
+          </div>
+          <div class="fr-g2" style="display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 12px; font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(107, 90, 78); margin-top: -4px;">
+            <span>Principal</span><span>Isotipo</span><span>Monograma</span><span>Negativo</span>
+          </div>
+          <div style="flex: 1 1 0%; background: rgb(255, 255, 255); border-radius: 20px; border: 2px solid rgba(26, 20, 17, 0.12); padding: 16px; display: flex; flex-direction: column; justify-content: center; gap: 10px;">
+            <img src="../assets/1e7344bbfa7484edefa081f89eef6747.jpg" alt="Poses de Frankie: saludando, caminando, guiño con OK, con la salsa y shaka de playa" style="width: 100%; display: block;">
+          </div>
+          <div style="font-size: 14px; color: rgb(138, 129, 114);">Poses: exploración de concepto hecha con IA. El nombre Frank o Frankie sigue abierto.</div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section id="sistema" style="display: flex; flex-direction: column; gap: 28px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: flex-end; border-top: 4px solid rgb(26, 20, 17); padding-top: 20px;">
+        <span style="font-family: &quot;Bagel Fat One&quot;, sans-serif; font-size: 96px; line-height: 0.8; color: rgb(26, 20, 17);">04</span>
+        <div style="flex: 1 1 420px; min-width: 0px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(107, 90, 78);">Capítulo · Identidad y sistema de diseño</div>
+          <h2 style="margin: 0px; font-family: &quot;Bagel Fat One&quot;, sans-serif; font-weight: 400; font-size: clamp(36px, 4.2vw, 56px); line-height: 1;">Un sistema cerrado. Manda el rojo.</h2>
+        </div>
+      </div>
+      <div class="fr-g2" style="display: grid; grid-template-columns: repeat(6, minmax(0px, 1fr)); gap: 10px;">
+        <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 110px; border-radius: 16px; background: rgb(214, 40, 40);"></div><div style="font-weight: 800;">Frank's Red</div><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(107, 90, 78);">#D62828</div></div>
+        <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 110px; border-radius: 16px; background: rgb(246, 190, 0);"></div><div style="font-weight: 800;">Mustard</div><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(107, 90, 78);">#F6BE00</div></div>
+        <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 110px; border-radius: 16px; background: rgb(255, 244, 224); border: 2px solid rgb(26, 20, 17);"></div><div style="font-weight: 800;">Bun Cream</div><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(107, 90, 78);">#FFF4E0</div></div>
+        <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 110px; border-radius: 16px; background: rgb(26, 20, 17);"></div><div style="font-weight: 800;">Char Black</div><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(107, 90, 78);">#1A1411</div></div>
+        <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 110px; border-radius: 16px; background: rgb(76, 154, 42);"></div><div style="font-weight: 800;">Relish Green</div><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(107, 90, 78);">#4C9A2A</div></div>
+        <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 110px; border-radius: 16px; background: rgb(231, 111, 42);"></div><div style="font-weight: 800;">Sunset Orange</div><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(107, 90, 78);">#E76F2A</div></div>
+      </div>
+      <div class="fr-g2" style="display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 12px;">
+        <div style="padding: 22px; border-radius: 18px; background: rgb(255, 255, 255); border: 2px solid rgb(26, 20, 17); display: flex; flex-direction: column; justify-content: space-between; gap: 10px;"><div style="font-family: &quot;Bagel Fat One&quot;, sans-serif; font-size: 40px; line-height: 0.95; color: rgb(214, 40, 40);">Bagel Fat One</div><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(107, 90, 78);">Display · logo y titulares</div></div>
+        <div style="padding: 22px; border-radius: 18px; background: rgb(26, 20, 17); color: rgb(255, 244, 224); display: flex; flex-direction: column; justify-content: space-between; gap: 10px;"><div style="display: flex; align-items: center; gap: 10px;"><span style="font-family: Anton, sans-serif; font-size: 40px; line-height: 1;">ANTON</span><span style="padding: 4px 10px; border-radius: 8px; background: rgb(246, 190, 0); color: rgb(26, 20, 17); font-family: Anton, sans-serif; font-size: 24px; transform: rotate(-4deg);">€6.20</span></div><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(246, 190, 0);">Precios y llamados</div></div>
+        <div style="padding: 22px; border-radius: 18px; background: rgb(255, 255, 255); border: 2px solid rgb(26, 20, 17); display: flex; flex-direction: column; justify-content: space-between; gap: 10px;"><div style="font-size: 22px; font-weight: 600; line-height: 1.3;">Everyone loves a good hot dog.</div><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(107, 90, 78);">Archivo · todo lo que se lee</div></div>
+        <div style="padding: 22px; border-radius: 18px; background: rgb(255, 255, 255); border: 2px solid rgb(26, 20, 17); display: flex; flex-direction: column; justify-content: space-between; gap: 10px;"><div style="font-family: &quot;DM Serif Display&quot;, serif; font-style: italic; font-size: 26px; line-height: 1.15; color: rgb(214, 40, 40);">Hotdogs with Attitude.</div><div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(107, 90, 78);">DM Serif italic · el guiño</div></div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: center; padding: clamp(24px, 4vw, 40px); border-radius: 26px; background: rgb(214, 40, 40); color: rgb(255, 244, 224);">
+        <div style="flex: 1 1 360px; min-width: 0px; display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-weight: 900; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgb(246, 190, 0);">Hecho como sistema, no como una hoja suelta</span>
+          <div style="font-family: &quot;DM Serif Display&quot;, serif; font-style: italic; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.2; color: rgb(246, 190, 0);">Los precios van en mostaza. Las sombras son stickers. Sin emojis.</div>
+        </div>
+        <div class="fr-g2" style="flex: 1.3 1 480px; min-width: 0px; display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: Anton, sans-serif; font-size: 52px; line-height: 1; color: rgb(246, 190, 0);">5</span><span style="font-weight: 700; font-size: 15px;">archivos de tokens: color, tipo, espacios, efectos y fuentes</span></div>
+          <div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: Anton, sans-serif; font-size: 52px; line-height: 1; color: rgb(246, 190, 0);">10</span><span style="font-weight: 700; font-size: 15px;">componentes: botón, precio, ítem de menú, badge…</span></div>
+          <div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: Anton, sans-serif; font-size: 52px; line-height: 1; color: rgb(246, 190, 0);">4</span><span style="font-weight: 700; font-size: 15px;">UI kits: delivery, carta, pantalla y redes</span></div>
+          <div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: Anton, sans-serif; font-size: 52px; line-height: 1; color: rgb(246, 190, 0);">1</span><span style="font-weight: 700; font-size: 15px;">SKILL.md para que cualquier IA diseñe dentro de la marca</span></div>
+        </div>
+      </div>
+      <div class="fr-g2" style="display: grid; grid-template-columns: repeat(5, minmax(0px, 1fr)); gap: 10px;">
+        <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 120px; border-radius: 16px; border: 2px solid rgb(26, 20, 17); background: repeating-conic-gradient(rgb(214, 40, 40) 0deg, rgb(214, 40, 40) 25%, rgb(255, 244, 224) 0deg, rgb(255, 244, 224) 50%) 0px 0px / 28px 28px;"></div><div style="font-weight: 800;">Diner checker</div></div>
+        <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 120px; border-radius: 16px; border: 2px solid rgb(26, 20, 17); background: rgb(255, 244, 224); overflow: hidden;"><svg viewBox="0 0 160 120" preserveAspectRatio="none" aria-hidden="true" style="width: 100%; height: 100%; display: block;"><path d="M-10 6 C 10 -4, 30 -4, 50 6 S 90 16, 110 6 S 150 -4, 170 6" fill="none" stroke="#D62828" stroke-width="7"></path><path d="M-10 24 C 10 14, 30 14, 50 24 S 90 34, 110 24 S 150 14, 170 24" fill="none" stroke="#D62828" stroke-width="7"></path><path d="M-10 42 C 10 32, 30 32, 50 42 S 90 52, 110 42 S 150 32, 170 42" fill="none" stroke="#D62828" stroke-width="7"></path><path d="M-10 60 C 10 50, 30 50, 50 60 S 90 70, 110 60 S 150 50, 170 60" fill="none" stroke="#D62828" stroke-width="7"></path><path d="M-10 78 C 10 68, 30 68, 50 78 S 90 88, 110 78 S 150 68, 170 78" fill="none" stroke="#D62828" stroke-width="7"></path><path d="M-10 96 C 10 86, 30 86, 50 96 S 90 106, 110 96 S 150 86, 170 96" fill="none" stroke="#D62828" stroke-width="7"></path><path d="M-10 114 C 10 104, 30 104, 50 114 S 90 124, 110 114 S 150 104, 170 114" fill="none" stroke="#D62828" stroke-width="7"></path></svg></div><div style="font-weight: 800;">Groovy waves</div></div>
+        <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 120px; border-radius: 16px; border: 2px solid rgb(26, 20, 17); background: repeating-linear-gradient(45deg, rgb(214, 40, 40) 0px, rgb(214, 40, 40) 12px, rgb(255, 244, 224) 12px, rgb(255, 244, 224) 24px);"></div><div style="font-weight: 800;">Candy stripes</div></div>
+        <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 120px; border-radius: 16px; border: 2px solid rgb(26, 20, 17); background: radial-gradient(circle, rgb(214, 40, 40) 34%, transparent 37%) 0px 0px / 14px 14px, rgb(255, 244, 224);"></div><div style="font-weight: 800;">Halftone</div></div>
+        <div style="display: flex; flex-direction: column; gap: 6px;"><div style="height: 120px; border-radius: 16px; border: 2px solid rgb(26, 20, 17); background: rgb(255, 244, 224); display: flex; align-items: center; justify-content: center;"><span style="padding: 10px 16px; border-radius: 14px; border: 3px dashed rgb(214, 40, 40); font-family: Anton, sans-serif; font-size: 22px; letter-spacing: 0.04em; color: rgb(214, 40, 40); transform: rotate(-4deg);">STICKER</span></div><div style="font-weight: 800;">Sticker edge</div></div>
+      </div>
+      <div style="font-size: 14px; color: rgb(107, 90, 78); margin-top: -14px;">Patrones del sistema</div>
+    </section>
+
+    
+    <section id="digital" style="display: flex; flex-direction: column; gap: 32px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: flex-end; border-top: 4px solid rgb(26, 20, 17); padding-top: 20px;">
+        <span style="font-family: &quot;Bagel Fat One&quot;, sans-serif; font-size: 96px; line-height: 0.8; color: rgb(76, 154, 42);">05</span>
+        <div style="flex: 1 1 420px; min-width: 0px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(107, 90, 78);">Capítulo · Experiencia digital</div>
+          <h2 style="margin: 0px; font-family: &quot;Bagel Fat One&quot;, sans-serif; font-weight: 400; font-size: clamp(36px, 4.2vw, 56px); line-height: 1;">Pedir, en pantalla y en el local.</h2>
+          <p style="margin: 0px; max-width: 64ch; color: rgb(74, 59, 50);">Tres interfaces sobre el mismo sistema: la app de delivery, la carta del local y la pantalla interactiva que rota los combos. Están vivas: puedes tocarlas.</p>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start;">
+        
+        <figure style="margin: 0px; flex: 0 1 414px; min-width: 0px; width: 100%; display: flex; flex-direction: column; gap: 12px;">
+          <div style="width: 100%; max-width: 414px; background: var(--cream); border-radius: 34px; overflow: hidden; box-shadow: rgba(26, 20, 17, 0.28) 0px 24px 60px, rgb(26, 20, 17) 0px 0px 0px 2px; position: relative; font-family: var(--font-body);">
+            <div style="position: relative; height: 190px; background: var(--red);">
+              <img src="../assets/044526ea6cef3ac7c408087f7af673a7.jpg" alt="Hot dogs, nachos y bebidas sobre rojo" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9; display: block;">
+              <div style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(26, 20, 17, 0.7), rgba(26, 20, 17, 0.05));"></div>
+              <div style="position: absolute; top: 16px; left: 16px; width: 38px; height: 38px; border-radius: 50%; background: var(--cream); color: var(--char); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800;">‹</div>
+              <div style="position: absolute; left: 18px; bottom: 16px; display: flex; align-items: center; gap: 12px;"><img src="../assets/bd2e0fe341dfa414cc8474763189eb5e.png" alt="" style="width: 56px; height: 56px; object-fit: contain; display: block; filter: brightness(0) invert(1);"><div style="font-family: var(--font-display); font-size: 26px; color: var(--cream); line-height: 0.9;">Frank's<br>Hotdogs</div></div>
+            </div>
+            <div style="background: rgb(255, 255, 255); padding: 16px 18px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line-on-cream);">
+              <span style="font-weight: 900; font-size: 14px;"><span style="color: var(--mustard);">★</span> 5.0</span><span style="color: var(--text-muted);">·</span>
+              <span style="font-size: 13px; color: var(--text-muted); font-weight: 600;">25–35 min · €2.90 delivery</span>
+              <span style="margin-left: auto; font-weight: 900; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--relish); background: rgba(76, 154, 42, 0.14); padding: 5px 10px; border-radius: 999px;">Open</span>
+            </div>
+            <div class="fr-chips" style="display: flex; gap: 8px; padding: 14px 18px; overflow-x: auto; scrollbar-width: none;">
+              <div style="white-space: nowrap; font-weight: 800; font-size: 13px; padding: 8px 16px; border-radius: 999px; border-color: var(--red); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; cursor: pointer; user-select: none; background: var(--red); color: var(--cream);"><span class="sc-interp">Popular</span></div><div style="white-space: nowrap; font-weight: 800; font-size: 13px; padding: 8px 16px; border-radius: 999px; border: 2px solid var(--char); cursor: pointer; user-select: none; background: transparent; color: var(--char);"><span class="sc-interp">Dogs</span></div><div style="white-space: nowrap; font-weight: 800; font-size: 13px; padding: 8px 16px; border-radius: 999px; border: 2px solid var(--char); cursor: pointer; user-select: none; background: transparent; color: var(--char);"><span class="sc-interp">Nachos</span></div><div style="white-space: nowrap; font-weight: 800; font-size: 13px; padding: 8px 16px; border-radius: 999px; border: 2px solid var(--char); cursor: pointer; user-select: none; background: transparent; color: var(--char);"><span class="sc-interp">Combos</span></div><div style="white-space: nowrap; font-weight: 800; font-size: 13px; padding: 8px 16px; border-radius: 999px; border: 2px solid var(--char); cursor: pointer; user-select: none; background: transparent; color: var(--char);"><span class="sc-interp">Sweet</span></div><div style="white-space: nowrap; font-weight: 800; font-size: 13px; padding: 8px 16px; border-radius: 999px; border: 2px solid var(--char); cursor: pointer; user-select: none; background: transparent; color: var(--char);"><span class="sc-interp">Drinks</span></div>
+            </div>
+            <div style="padding: 4px 18px 96px;">
+              <div style="font-family: var(--font-poster); text-transform: uppercase; font-size: 20px; margin: 10px 0px 4px;"><span class="sc-interp">Popular</span></div>
+              
+                <div style="display: flex; gap: 14px; padding: 14px 0px; border-bottom: 1px solid var(--line-on-cream); align-items: center;">
+                  <div style="flex: 1 1 0%; min-width: 0px;">
+                    <div style="font-weight: 800; font-size: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;"><span class="sc-interp">Classic Hot Dog</span><span style="font-weight: 900; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; background: var(--mustard); padding: 2px 7px; border-radius: 999px;"><span class="sc-interp">Hero</span></span></div>
+                    <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 3px; line-height: 1.4;"><span class="sc-interp">Frank's sauce, crispy onions, mustard. The one everyone comes back for.</span></div>
+                    <div style="font-family: var(--font-poster); font-size: 18px; color: var(--red); margin-top: 8px;"><span class="sc-interp">€6.20</span></div>
+                  </div>
+                  <div style="position: relative; flex: 0 0 auto;">
+                    <img src="../assets/c278b6e6c50577954f1632d191640902.jpg" alt="" style="width: 96px; height: 96px; border-radius: 12px; object-fit: cover; display: block;">
+                    <div class="fr-add" style="position: absolute; right: 6px; bottom: 6px; width: 32px; height: 32px; border-radius: 50%; background: var(--cream); border: 2px solid var(--char); font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 2px 2px 0 var(--char); user-select: none;">+</div>
+                  </div>
+                </div>
+              
+                <div style="display: flex; gap: 14px; padding: 14px 0px; border-bottom: 1px solid var(--line-on-cream); align-items: center;">
+                  <div style="flex: 1 1 0%; min-width: 0px;">
+                    <div style="font-weight: 800; font-size: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;"><span class="sc-interp">Loaded Nachos</span></div>
+                    <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 3px; line-height: 1.4;"><span class="sc-interp">Cheese, jalapeño, the works — in the red basket.</span></div>
+                    <div style="font-family: var(--font-poster); font-size: 18px; color: var(--red); margin-top: 8px;"><span class="sc-interp">€8.60</span></div>
+                  </div>
+                  <div style="position: relative; flex: 0 0 auto;">
+                    <img src="../assets/4fd144ed151e60d569928c005972ceb0.jpg" alt="" style="width: 96px; height: 96px; border-radius: 12px; object-fit: cover; display: block;">
+                    <div class="fr-add" style="position: absolute; right: 6px; bottom: 6px; width: 32px; height: 32px; border-radius: 50%; background: var(--cream); border: 2px solid var(--char); font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 2px 2px 0 var(--char); user-select: none;">+</div>
+                  </div>
+                </div>
+              
+                <div style="display: flex; gap: 14px; padding: 14px 0px; border-bottom: 1px solid var(--line-on-cream); align-items: center;">
+                  <div style="flex: 1 1 0%; min-width: 0px;">
+                    <div style="font-weight: 800; font-size: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;"><span class="sc-interp">Frank's Sauce</span><span style="font-weight: 900; font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; background: var(--mustard); padding: 2px 7px; border-radius: 999px;"><span class="sc-interp">€1.50</span></span></div>
+                    <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 3px; line-height: 1.4;"><span class="sc-interp">Dense. Borderline illegal. Add a pot (or three).</span></div>
+                    <div style="font-family: var(--font-poster); font-size: 18px; color: var(--red); margin-top: 8px;"><span class="sc-interp">€1.50</span></div>
+                  </div>
+                  <div style="position: relative; flex: 0 0 auto;">
+                    <img src="../assets/5c2af39d6644ec5fffd0ed3dbc243dc8.jpg" alt="" style="width: 96px; height: 96px; border-radius: 12px; object-fit: cover; display: block;">
+                    <div class="fr-add" style="position: absolute; right: 6px; bottom: 6px; width: 32px; height: 32px; border-radius: 50%; background: var(--cream); border: 2px solid var(--char); font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 2px 2px 0 var(--char); user-select: none;">+</div>
+                  </div>
+                </div>
+              
+                <div style="display: flex; gap: 14px; padding: 14px 0px; border-bottom: 1px solid var(--line-on-cream); align-items: center;">
+                  <div style="flex: 1 1 0%; min-width: 0px;">
+                    <div style="font-weight: 800; font-size: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;"><span class="sc-interp">Cookie</span></div>
+                    <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 3px; line-height: 1.4;"><span class="sc-interp">M&amp;M or choc chip. Warm if you're lucky.</span></div>
+                    <div style="font-family: var(--font-poster); font-size: 18px; color: var(--red); margin-top: 8px;"><span class="sc-interp">€4.00</span></div>
+                  </div>
+                  <div style="position: relative; flex: 0 0 auto;">
+                    <img src="../assets/34ddec2b9d5feb329277eebd71210388.jpg" alt="" style="width: 96px; height: 96px; border-radius: 12px; object-fit: cover; display: block;">
+                    <div class="fr-add" style="position: absolute; right: 6px; bottom: 6px; width: 32px; height: 32px; border-radius: 50%; background: var(--cream); border: 2px solid var(--char); font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 2px 2px 0 var(--char); user-select: none;">+</div>
+                  </div>
+                </div>
+              
+                <div style="display: flex; gap: 14px; padding: 14px 0px; border-bottom: 1px solid var(--line-on-cream); align-items: center;">
+                  <div style="flex: 1 1 0%; min-width: 0px;">
+                    <div style="font-weight: 800; font-size: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;"><span class="sc-interp">Strawberry Refresher</span></div>
+                    <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 3px; line-height: 1.4;"><span class="sc-interp">Iced, fruity, made for hard-sun days.</span></div>
+                    <div style="font-family: var(--font-poster); font-size: 18px; color: var(--red); margin-top: 8px;"><span class="sc-interp">€2.85</span></div>
+                  </div>
+                  <div style="position: relative; flex: 0 0 auto;">
+                    <img src="../assets/d7f04f0e37763e95013ccc7f5b5fbf8f.jpg" alt="" style="width: 96px; height: 96px; border-radius: 12px; object-fit: cover; display: block;">
+                    <div class="fr-add" style="position: absolute; right: 6px; bottom: 6px; width: 32px; height: 32px; border-radius: 50%; background: var(--cream); border: 2px solid var(--char); font-size: 20px; font-weight: 800; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 2px 2px 0 var(--char); user-select: none;">+</div>
+                  </div>
+                </div>
+              
+            </div>
+            <div style="position: absolute; left: 18px; right: 18px; bottom: 18px; background: var(--red); color: var(--cream); border-radius: 999px; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 0.03em; box-shadow: var(--shadow-sticker);">
+              <span style="display: flex; align-items: center; gap: 8px;"><span style="background: var(--mustard); color: var(--char); border-radius: 999px; min-width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-poster); font-size: 15px; padding: 0px 6px; animation: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0s 1 normal both running heroIn;"><span class="sc-interp">2</span></span>en la bolsa</span>
+              <span style="font-family: var(--font-poster); font-size: 19px;"><span class="sc-interp">€12.40</span></span>
+            </div>
+          </div>
+          <figcaption style="font-size: 14px; line-height: 1.4; color: rgb(107, 90, 78);"><b style="color: rgb(26, 20, 17);">App de delivery</b> · toca + para sumar a la bolsa</figcaption>
+        </figure>
+
+        
+        <figure style="margin: 0px; flex: 1 1 520px; min-width: 0px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="width: 100%; background: var(--char); color: var(--cream); border-radius: 26px; overflow: hidden; box-shadow: rgba(26, 20, 17, 0.28) 0px 24px 60px; font-family: var(--font-body);">
+            <div style="background: var(--red); padding: 28px 32px 30px; display: flex; align-items: center; justify-content: space-between; gap: 16px; position: relative;">
+              <div style="font-family: var(--font-display); font-size: clamp(34px, 4vw, 50px); line-height: 0.85;">Frank's<br>Hotdogs<small style="display: block; font-family: var(--font-serif-i); font-style: italic; font-size: 18px; margin-top: 8px; color: var(--mustard);">Hotdogs with Attitude</small></div>
+              <img src="../assets/bd2e0fe341dfa414cc8474763189eb5e.png" alt="" style="height: 96px; width: auto; display: block; filter: brightness(0) invert(1);">
+              <div style="position: absolute; left: 0px; right: 0px; bottom: 0px; height: 14px; background-image: ; background-position-x: ; background-position-y: ; background-repeat: ; background-attachment: ; background-origin: ; background-clip: ; background-color: ; background-size: 28px 28px;"></div>
+            </div>
+            <div class="fr-board-cols" style="display: grid; grid-template-columns: 1.15fr 1fr;">
+              <div style="padding: 28px 30px;">
+                <div style="background: var(--mustard); color: var(--char); border-radius: 18px; padding: 16px 18px; display: flex; align-items: center; gap: 14px; margin-bottom: 24px; box-shadow: var(--shadow-sticker);">
+                  <div><div style="font-family: var(--font-display); font-size: 26px; line-height: 0.9;">Frank's Sauce</div><div style="font-family: var(--font-serif-i); font-style: italic; font-size: 14px; margin-top: 4px;">The reason regulars become regulars.</div></div>
+                  <div style="margin-left: auto; font-family: var(--font-poster); font-size: 34px; color: var(--red); transform: rotate(-4deg);">€1.50</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;"><span style="font-family: var(--font-poster); text-transform: uppercase; font-size: 22px; color: var(--mustard);">The Dogs</span><span style="flex: 1 1 0%; height: 2px; background: rgba(246, 190, 0, 0.35);"></span></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div><div style="font-weight: 800; font-size: 16px;">Classic Hot Dog <span style="font-weight: 900; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--char); background: var(--mustard); padding: 2px 7px; border-radius: 999px; vertical-align: middle;">Hero</span></div><div style="font-size: 12px; color: rgba(255, 244, 224, 0.6);">Frank's sauce, crispy onions, mustard</div></div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€6.20</div></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div><div style="font-weight: 800; font-size: 16px;">Double Trouble</div><div style="font-size: 12px; color: rgba(255, 244, 224, 0.6);">Two dogs, double cheese, borderline illegal</div></div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€9.40</div></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div><div style="font-weight: 800; font-size: 16px;">The Late One</div><div style="font-size: 12px; color: rgba(255, 244, 224, 0.6);">Chilli, jalapeño, extra sauce</div></div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€7.80</div></div>
+                <div style="display: flex; align-items: center; gap: 12px; margin: 22px 0px 10px;"><span style="font-family: var(--font-poster); text-transform: uppercase; font-size: 22px; color: var(--mustard);">Loaded Nachos</span><span style="flex: 1 1 0%; height: 2px; background: rgba(246, 190, 0, 0.35);"></span></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div><div style="font-weight: 800; font-size: 16px;">Loaded Nachos</div><div style="font-size: 12px; color: rgba(255, 244, 224, 0.6);">Cheese, jalapeño, the works</div></div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€8.60</div></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div style="font-weight: 800; font-size: 16px;">Cheesy Nachos</div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€6.75</div></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div style="font-weight: 800; font-size: 16px;">Tortilla Nachos</div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€5.50</div></div>
+              </div>
+              <div style="padding: 28px 30px; border-left: 2px dashed rgba(255, 244, 224, 0.16);">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;"><span style="font-family: var(--font-poster); text-transform: uppercase; font-size: 22px; color: var(--mustard);">Combos</span><span style="flex: 1 1 0%; height: 2px; background: rgba(246, 190, 0, 0.35);"></span></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div><div style="font-weight: 800; font-size: 16px;">Hot Dog Saver</div><div style="font-size: 12px; color: rgba(255, 244, 224, 0.6);">Dog + fries + drink</div></div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€9.50</div></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div style="font-weight: 800; font-size: 16px;">Cheesy Nacho Combo</div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€15.90</div></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div><div style="font-weight: 800; font-size: 16px;">Loaded Feast</div><div style="font-size: 12px; color: rgba(255, 244, 224, 0.6);">For two. Bring backup.</div></div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€20.90</div></div>
+                <div style="display: flex; align-items: center; gap: 12px; margin: 22px 0px 10px;"><span style="font-family: var(--font-poster); text-transform: uppercase; font-size: 22px; color: var(--mustard);">Sweet</span><span style="flex: 1 1 0%; height: 2px; background: rgba(246, 190, 0, 0.35);"></span></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div><div style="font-weight: 800; font-size: 16px;">Cookie</div><div style="font-size: 12px; color: rgba(255, 244, 224, 0.6);">M&amp;M / choc chip</div></div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€4.00</div></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div style="font-weight: 800; font-size: 16px;">Brownie</div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€4.20</div></div>
+                <div style="display: flex; align-items: center; gap: 12px; margin: 22px 0px 10px;"><span style="font-family: var(--font-poster); text-transform: uppercase; font-size: 22px; color: var(--mustard);">Refreshers</span><span style="flex: 1 1 0%; height: 2px; background: rgba(246, 190, 0, 0.35);"></span></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div style="font-weight: 800; font-size: 16px;">Strawberry</div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€2.85</div></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div style="font-weight: 800; font-size: 16px;">Mango</div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€2.90</div></div>
+                <div style="display: flex; align-items: baseline; gap: 10px; padding: 7px 0px;"><div style="font-weight: 800; font-size: 16px;">Half &amp; Half</div><div style="flex: 1 1 0%; align-self: flex-end; margin-bottom: 6px; border-bottom: 2px dotted rgba(255, 244, 224, 0.25);"></div><div style="font-family: var(--font-poster); font-size: 22px;">€2.90</div></div>
+              </div>
+            </div>
+            <div style="background: var(--cream); color: var(--char); padding: 18px 30px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; font-weight: 700; font-size: 12px; letter-spacing: 0.04em;">
+              <div style="font-family: var(--font-serif-i); font-style: italic; font-size: 19px; color: var(--red);">Everyone loves a good hot dog.</div>
+              <div style="text-transform: uppercase;">Open 11:00 – 23:00 daily · Pietà, Malta</div>
+            </div>
+          </div>
+          <figcaption style="font-size: 14px; line-height: 1.4; color: rgb(107, 90, 78);"><b style="color: rgb(26, 20, 17);">Carta del local</b> · la misma lengua de precios que Wolt y Bolt Food</figcaption>
+        </figure>
+      </div>
+
+      
+      <figure style="margin: 0px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;">
+          <span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(214, 40, 40);">Sistema de pantallas</span>
+          <span style="font-family: &quot;Bagel Fat One&quot;, sans-serif; font-size: clamp(26px, 3vw, 36px); line-height: 1;">La pantalla del local, viva.</span>
+        </div>
+        <div style="padding: 14px; border-radius: 24px; background: rgb(0, 0, 0); box-shadow: rgb(58, 50, 44) 0px 0px 0px 2px, rgba(26, 20, 17, 0.45) 0px 30px 70px;">
+          <div style="position: relative; width: 100%; height: 704px; border-radius: 10px; overflow: hidden; background: var(--cream);">
+            <div style="width: 1920px; height: 1080px; background: var(--cream); display: flex; flex-direction: column; overflow: hidden; font-family: var(--font-body); color: var(--char); position: absolute; left: 0px; top: 0px; transform: scale(0.652083); transform-origin: 0px 0px;">
+
+              <header style="height: 140px; flex: 0 0 auto; background: var(--red); display: flex; align-items: center; justify-content: space-between; padding: 0px 48px; position: relative;">
+                <div style="display: flex; align-items: center; gap: 22px;">
+                  <img src="../assets/bd2e0fe341dfa414cc8474763189eb5e.png" alt="Frank's Hotdogs" style="width: 92px; height: 92px; object-fit: contain; display: block; filter: brightness(0) invert(96%) sepia(14%) saturate(300%);">
+                  <div>
+                    <div style="font-family: var(--font-display); font-size: 44px; line-height: 0.78; color: var(--cream);">Frank's<br>Hotdogs</div>
+                    <div style="font-family: var(--font-serif-i); font-style: italic; font-size: 19px; color: var(--mustard); margin-top: 9px;">Hotdogs with Attitude</div>
+                  </div>
+                </div>
+                <div style="display: flex; gap: 16px;">
+                  <div style="font-family: var(--font-body); font-weight: 900; font-size: 19px; letter-spacing: 0.04em; text-transform: uppercase; padding: 12px 26px; border-radius: 999px; cursor: pointer; transition: 0.18s; user-select: none; background: var(--cream); color: var(--red); box-shadow: rgba(26, 20, 17, 0.25) 3px 3px 0px;">Combos</div>
+                  <div style="font-family: var(--font-body); font-weight: 900; font-size: 19px; letter-spacing: 0.04em; text-transform: uppercase; padding: 12px 26px; border-radius: 999px; cursor: pointer; transition: 0.18s; user-select: none; background: transparent; color: var(--cream); border: 2px solid rgba(255, 244, 224, 0.5);">Snacks &amp; Drinks</div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 9px;">
+                  <div style="font-family: var(--font-poster); font-size: 50px; line-height: 0.8; color: var(--cream);"><span class="sc-interp">22:03</span></div>
+                  <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="display: inline-flex; align-items: center; gap: 8px; font-weight: 900; font-size: 14px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--char); background: var(--mustard); padding: 6px 14px; border-radius: 999px;"><span style="width: 9px; height: 9px; border-radius: 50%; background: var(--relish);"></span>Open now</span>
+                    <span style="font-weight: 800; font-size: 15px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255, 244, 224, 0.82);">Pietà · Malta</span>
+                  </div>
+                </div>
+                <div style="position: absolute; left: 0px; right: 0px; bottom: 0px; height: 12px; background-image: conic-gradient(var(--red) 90deg, var(--cream) 0 180deg, var(--red) 0 270deg, var(--cream) 0); background-size: 24px 24px;"></div>
+              </header>
+
+              <main style="flex: 1 1 0%; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0px; left: 0px; height: 6px; background: var(--mustard); width: 0%; animation-name: barGrow; animation-timing-function: linear; animation-fill-mode: forwards; animation-duration: 5000ms; z-index: 6; opacity: 0.85;"></div>
+
+                
+                  <div style="height: 100%; display: flex; gap: 40px; padding: 40px; background: var(--cream);">
+                    <div style="flex: 0 0 1104px; height: 100%;">
+                      <div style="height: 100%; background: rgb(255, 255, 255); border-radius: 26px; overflow: hidden; box-shadow: rgba(26, 20, 17, 0.18) 0px 16px 44px; display: flex; flex-direction: column; cursor: pointer; animation: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0s 1 normal both running heroIn;">
+                        <div style="position: relative; height: 500px; flex: 0 0 auto; background: var(--red);">
+                          <div style="display: flex; width: 100%; height: 100%;">
+                            <img src="../assets/e6855ee4e0dcac53f43d8334ba5e3460.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block;">
+                            
+                            
+                            
+                            
+                            
+                          </div>
+                          <div style="position: absolute; top: 26px; left: 26px; font-family: var(--font-poster); font-size: 30px; color: var(--cream); background: var(--red); padding: 9px 22px; border-radius: 12px; transform: rotate(-2deg); box-shadow: rgba(26, 20, 17, 0.3) 3px 3px 0px; text-transform: uppercase;"><span class="sc-interp">Combo 1</span></div>
+                          <div style="position: absolute; top: 22px; right: 26px; font-family: var(--font-poster); font-size: 76px; line-height: 1; color: var(--char); background: var(--mustard); padding: 12px 26px; border-radius: 14px; transform: rotate(-5deg); box-shadow: 4px 4px 0 var(--char);"><span class="sc-interp">€4.35</span></div>
+                          <div style="position: absolute; bottom: 24px; left: 26px; font-weight: 900; font-size: 15px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--char); background: var(--mustard); padding: 9px 18px; border-radius: 999px; box-shadow: rgba(26, 20, 17, 0.3) 2px 2px 0px;"><span class="sc-interp">Best value</span></div>
+                        </div>
+                        <div style="flex: 1 1 0%; padding: 22px 44px 24px; display: flex; flex-direction: column; justify-content: center; gap: 10px;">
+                          <div style="font-family: var(--font-poster); font-size: 80px; line-height: 1; text-transform: uppercase; color: var(--char);"><span class="sc-interp">Hot Dog Saver</span></div>
+                          <div style="font-family: var(--font-serif-i); font-style: italic; font-size: 30px; color: var(--red);"><span class="sc-interp">One dog, one drink. Sorted.</span></div>
+                          <div style="font-weight: 700; font-size: 26px; color: var(--char-soft);"><span class="sc-interp">1× Hot dog + Drink</span></div>
+                          <div style="display: flex; gap: 12px; margin-top: 16px;">
+                            <div style="width: 46px; height: 12px; border-radius: 999px; background: var(--red); transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);"></div><div style="width: 12px; height: 12px; border-radius: 999px; background: rgba(26, 20, 17, 0.2); transition: 0.3s;"></div><div style="width: 12px; height: 12px; border-radius: 999px; background: rgba(26, 20, 17, 0.2); transition: 0.3s;"></div><div style="width: 12px; height: 12px; border-radius: 999px; background: rgba(26, 20, 17, 0.2); transition: 0.3s;"></div><div style="width: 12px; height: 12px; border-radius: 999px; background: rgba(26, 20, 17, 0.2); transition: 0.3s;"></div><div style="width: 12px; height: 12px; border-radius: 999px; background: rgba(26, 20, 17, 0.2); transition: 0.3s;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="flex: 1 1 0%; height: 100%; display: flex; flex-direction: column; min-width: 0px;">
+                      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 18px;">
+                        <span style="font-weight: 900; font-size: 18px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); white-space: nowrap;">All Combos</span>
+                        <span style="flex: 1 1 0%; height: 3px; background: rgba(214, 40, 40, 0.24);"></span>
+                        <span style="font-weight: 800; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap;">Tap to view</span>
+                      </div>
+                      <div style="flex: 1 1 0%; display: flex; flex-direction: column; gap: 12px;">
+                        
+                          <div style="display: flex; align-items: center; gap: 20px; padding: 0px 22px; height: 108px; border-radius: 18px; cursor: pointer; transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s, background 0.18s; background: var(--red); box-shadow: 5px 5px 0 var(--char); transform: translateY(-2px);">
+                            <div style="flex: 0 0 auto; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-poster); font-size: 30px; line-height: 1; background: var(--mustard); color: var(--char);"><span class="sc-interp">1</span></div>
+                            <div style="flex: 1 1 0%; min-width: 0px;">
+                              <div style="font-family: var(--font-body); font-weight: 800; font-size: 30px; line-height: 1; color: var(--cream); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span class="sc-interp">Hot Dog Saver</span></div>
+                              <div style="font-family: var(--font-body); font-weight: 600; font-size: 16px; margin-top: 6px; color: rgba(255, 244, 224, 0.8); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span class="sc-interp">1× Hot dog + Drink</span></div>
+                            </div>
+                            <div style="flex: 0 0 auto; font-family: var(--font-poster); font-size: 34px; line-height: 1; padding: 6px 16px; border-radius: 8px; background: var(--mustard); color: var(--char); transform: rotate(-3deg); box-shadow: rgba(26, 20, 17, 0.28) 2px 2px 0px;"><span class="sc-interp">€4.35</span></div>
+                          </div>
+                        
+                          <div style="display: flex; align-items: center; gap: 20px; padding: 0px 22px; height: 108px; border-radius: 18px; cursor: pointer; transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s, background 0.18s; background: rgb(255, 255, 255); box-shadow: rgba(26, 20, 17, 0.09) 0px 6px 16px; border: 2px solid var(--line-on-cream);">
+                            <div style="flex: 0 0 auto; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-poster); font-size: 30px; line-height: 1; background: var(--red); color: var(--cream);"><span class="sc-interp">2</span></div>
+                            <div style="flex: 1 1 0%; min-width: 0px;">
+                              <div style="font-family: var(--font-body); font-weight: 800; font-size: 30px; line-height: 1; color: var(--char); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span class="sc-interp">Cheesy Nacho Combo</span></div>
+                              <div style="font-family: var(--font-body); font-weight: 600; font-size: 16px; margin-top: 6px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span class="sc-interp">1× Hot dog + Cheesy Nachos + Drink</span></div>
+                            </div>
+                            <div style="flex: 0 0 auto; font-family: var(--font-poster); font-size: 34px; line-height: 1; padding: 6px 16px; border-radius: 8px; background: var(--mustard); color: var(--char); transform: rotate(-3deg); box-shadow: rgba(26, 20, 17, 0.28) 2px 2px 0px;"><span class="sc-interp">€7.10</span></div>
+                          </div>
+                        
+                          <div style="display: flex; align-items: center; gap: 20px; padding: 0px 22px; height: 108px; border-radius: 18px; cursor: pointer; transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s, background 0.18s; background: rgb(255, 255, 255); box-shadow: rgba(26, 20, 17, 0.09) 0px 6px 16px; border: 2px solid var(--line-on-cream);">
+                            <div style="flex: 0 0 auto; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-poster); font-size: 30px; line-height: 1; background: var(--red); color: var(--cream);"><span class="sc-interp">3</span></div>
+                            <div style="flex: 1 1 0%; min-width: 0px;">
+                              <div style="font-family: var(--font-body); font-weight: 800; font-size: 30px; line-height: 1; color: var(--char); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span class="sc-interp">Double Hot Dog Meal</span></div>
+                              <div style="font-family: var(--font-body); font-weight: 600; font-size: 16px; margin-top: 6px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span class="sc-interp">2× Hot dog + Drink</span></div>
+                            </div>
+                            <div style="flex: 0 0 auto; font-family: var(--font-poster); font-size: 34px; line-height: 1; padding: 6px 16px; border-radius: 8px; background: var(--mustard); color: var(--char); transform: rotate(-3deg); box-shadow: rgba(26, 20, 17, 0.28) 2px 2px 0px;"><span class="sc-interp">€7.30</span></div>
+                          </div>
+                        
+                          <div style="display: flex; align-items: center; gap: 20px; padding: 0px 22px; height: 108px; border-radius: 18px; cursor: pointer; transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s, background 0.18s; background: rgb(255, 255, 255); box-shadow: rgba(26, 20, 17, 0.09) 0px 6px 16px; border: 2px solid var(--line-on-cream);">
+                            <div style="flex: 0 0 auto; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-poster); font-size: 30px; line-height: 1; background: var(--red); color: var(--cream);"><span class="sc-interp">4</span></div>
+                            <div style="flex: 1 1 0%; min-width: 0px;">
+                              <div style="font-family: var(--font-body); font-weight: 800; font-size: 30px; line-height: 1; color: var(--char); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span class="sc-interp">Hot Dog Share Box</span></div>
+                              <div style="font-family: var(--font-body); font-weight: 600; font-size: 16px; margin-top: 6px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span class="sc-interp">2× Hot dog + 2× Drink</span></div>
+                            </div>
+                            <div style="flex: 0 0 auto; font-family: var(--font-poster); font-size: 34px; line-height: 1; padding: 6px 16px; border-radius: 8px; background: var(--mustard); color: var(--char); transform: rotate(-3deg); box-shadow: rgba(26, 20, 17, 0.28) 2px 2px 0px;"><span class="sc-interp">€8.50</span></div>
+                          </div>
+                        
+                          <div style="display: flex; align-items: center; gap: 20px; padding: 0px 22px; height: 108px; border-radius: 18px; cursor: pointer; transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s, background 0.18s; background: rgb(255, 255, 255); box-shadow: rgba(26, 20, 17, 0.09) 0px 6px 16px; border: 2px solid var(--line-on-cream);">
+                            <div style="flex: 0 0 auto; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-poster); font-size: 30px; line-height: 1; background: var(--red); color: var(--cream);"><span class="sc-interp">5</span></div>
+                            <div style="flex: 1 1 0%; min-width: 0px;">
+                              <div style="font-family: var(--font-body); font-weight: 800; font-size: 30px; line-height: 1; color: var(--char); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span class="sc-interp">Sweet Deal Meal</span></div>
+                              <div style="font-family: var(--font-body); font-weight: 600; font-size: 16px; margin-top: 6px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span class="sc-interp">1× Hot dog + Drink + Cookie</span></div>
+                            </div>
+                            <div style="flex: 0 0 auto; font-family: var(--font-poster); font-size: 34px; line-height: 1; padding: 6px 16px; border-radius: 8px; background: var(--mustard); color: var(--char); transform: rotate(-3deg); box-shadow: rgba(26, 20, 17, 0.28) 2px 2px 0px;"><span class="sc-interp">€5.15</span></div>
+                          </div>
+                        
+                          <div style="display: flex; align-items: center; gap: 20px; padding: 0px 22px; height: 108px; border-radius: 18px; cursor: pointer; transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.18s, background 0.18s; background: rgb(255, 255, 255); box-shadow: rgba(26, 20, 17, 0.09) 0px 6px 16px; border: 2px solid var(--line-on-cream);">
+                            <div style="flex: 0 0 auto; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-poster); font-size: 30px; line-height: 1; background: var(--red); color: var(--cream);"><span class="sc-interp">6</span></div>
+                            <div style="flex: 1 1 0%; min-width: 0px;">
+                              <div style="font-family: var(--font-body); font-weight: 800; font-size: 30px; line-height: 1; color: var(--char); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span class="sc-interp">Loaded Feast Combo</span></div>
+                              <div style="font-family: var(--font-body); font-weight: 600; font-size: 16px; margin-top: 6px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><span class="sc-interp">2× Hot dog + Drink + Loaded Nachos</span></div>
+                            </div>
+                            <div style="flex: 0 0 auto; font-family: var(--font-poster); font-size: 34px; line-height: 1; padding: 6px 16px; border-radius: 8px; background: var(--mustard); color: var(--char); transform: rotate(-3deg); box-shadow: rgba(26, 20, 17, 0.28) 2px 2px 0px;"><span class="sc-interp">€10.05</span></div>
+                          </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                
+
+                
+              </main>
+
+              <footer style="height: 72px; flex: 0 0 auto; background: var(--cream); display: flex; align-items: center; justify-content: space-between; padding: 0px 48px; border-top: 3px solid var(--char);">
+                <div style="font-family: var(--font-serif-i); font-style: italic; font-size: 26px; color: var(--red);">Everyone loves a good hot dog.</div>
+                <div style="display: flex; align-items: center; gap: 20px; font-weight: 800; font-size: 16px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--char-soft);">
+                  <span>Order on Wolt &amp; Bolt Food</span><span style="width: 6px; height: 6px; border-radius: 50%; background: var(--red);"></span><span>Open 11:00 – 23:00 Daily</span>
+                </div>
+              </footer>
+
+            </div>
+          </div>
+        </div>
+        <figcaption style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-size: 14px; line-height: 1.4; color: rgb(107, 90, 78);">
+          <span><b style="color: rgb(26, 20, 17);">Pantalla interactiva 16:9</b> · rota sola los seis combos y pasa a Snacks &amp; Drinks; toca un combo o una pestaña para elegir.</span>
+          <span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px;">Reloj en vivo · barra de tiempo · se reinicia al tocar</span>
+        </figcaption>
+      </figure>
+
+      
+      <div style="display: flex; flex-direction: column; gap: 20px; padding-top: 12px;">
+        <div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;">
+          <span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(214, 40, 40);">Experiencia de usuario</span>
+          <span style="font-family: &quot;Bagel Fat One&quot;, sans-serif; font-size: clamp(26px, 3vw, 36px); line-height: 1;">Diseñado alrededor de un solo recorrido.</span>
+        </div>
+        <div class="fr-g2" style="display: grid; grid-template-columns: repeat(5, minmax(0px, 1fr)); gap: 18px; position: relative;">
+          <div class="fr-journey-line" style="position: absolute; left: 0px; right: 0px; top: 110px; height: 5px; background: rgb(214, 40, 40); border-radius: 3px;"></div>
+          <div style="display: flex; flex-direction: column; gap: 10px; position: relative;"><div style="height: 220px; border-radius: 18px; overflow: hidden; border: 5px solid rgb(255, 244, 224); box-shadow: rgb(26, 20, 17) 5px 5px 0px;"><img src="../assets/6e9e2df56d4a670467942acc72fc16f6.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div><span style="font-family: Anton, sans-serif; font-size: 28px; text-transform: uppercase; color: rgb(214, 40, 40);">Verlo</span><span style="font-size: 16px; line-height: 1.35; color: rgb(58, 50, 44);">Un post que te hace parar.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 10px; position: relative;"><div style="height: 220px; border-radius: 18px; overflow: hidden; border: 5px solid rgb(255, 244, 224); box-shadow: rgb(26, 20, 17) 5px 5px 0px;"><img src="../assets/0650c6c8727a6cd1090fa913df62eced.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div><span style="font-family: Anton, sans-serif; font-size: 28px; text-transform: uppercase; color: rgb(214, 40, 40);">Antojarse</span><span style="font-size: 16px; line-height: 1.35; color: rgb(58, 50, 44);">Comida real, sol fuerte, gente real.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 10px; position: relative;"><div style="height: 220px; border-radius: 18px; overflow: hidden; border: 5px solid rgb(255, 244, 224); box-shadow: rgb(26, 20, 17) 5px 5px 0px;"><img src="../assets/c278b6e6c50577954f1632d191640902.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div><span style="font-family: Anton, sans-serif; font-size: 28px; text-transform: uppercase; color: rgb(214, 40, 40);">Pedirlo</span><span style="font-size: 16px; line-height: 1.35; color: rgb(58, 50, 44);">En el local, Wolt o Bolt: la misma carta.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 10px; position: relative;"><div style="height: 220px; border-radius: 18px; overflow: hidden; border: 5px solid rgb(255, 244, 224); box-shadow: rgb(26, 20, 17) 5px 5px 0px;"><img src="../assets/fc9ee3eb70ce5aa3fa3d095ab19d8f41.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div><span style="font-family: Anton, sans-serif; font-size: 28px; text-transform: uppercase; color: rgb(214, 40, 40);">Recibirlo</span><span style="font-size: 16px; line-height: 1.35; color: rgb(58, 50, 44);">Un empaque que lleva la marca a casa.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 10px; position: relative;"><div style="height: 220px; border-radius: 18px; overflow: hidden; border: 5px solid rgb(255, 244, 224); box-shadow: rgb(26, 20, 17) 5px 5px 0px;"><img src="../assets/e6855ee4e0dcac53f43d8334ba5e3460.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block;"></div><span style="font-family: Anton, sans-serif; font-size: 28px; text-transform: uppercase; color: rgb(214, 40, 40);">Compartirlo</span><span style="font-size: 16px; line-height: 1.35; color: rgb(58, 50, 44);">Fotogénico a propósito, para que crezca el alcance.</span></div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section id="aplicaciones" style="display: flex; flex-direction: column; gap: 28px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: flex-end; border-top: 4px solid rgb(26, 20, 17); padding-top: 20px;">
+        <span style="font-family: &quot;Bagel Fat One&quot;, sans-serif; font-size: 96px; line-height: 0.8; color: rgb(231, 111, 42);">06</span>
+        <div style="flex: 1 1 420px; min-width: 0px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(107, 90, 78);">Capítulo · Aplicaciones y fotografía</div>
+          <h2 style="margin: 0px; font-family: &quot;Bagel Fat One&quot;, sans-serif; font-weight: 400; font-size: clamp(36px, 4.2vw, 56px); line-height: 1;">La identidad en todo lo que toca.</h2>
+        </div>
+      </div>
+      <div class="fr-g2" style="display: grid; grid-template-columns: repeat(6, minmax(0px, 1fr)); gap: 14px;">
+        <figure style="margin: 0px; display: flex; flex-direction: column; gap: 8px;"><img src="../assets/fd26c921bdd71bd13cb519873f216ca3.jpg" alt="Bolsa kraft con Frankie" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; display: block;"><figcaption style="font-weight: 800; font-size: 13px; text-transform: uppercase;">Bolsa kraft</figcaption></figure>
+        <figure style="margin: 0px; display: flex; flex-direction: column; gap: 8px;"><img src="../assets/dc93d1d4bd731e0a05e4e5a94091c0d2.jpg" alt="Vaso de salsa Frank's Sauce" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; display: block;"><figcaption style="font-weight: 800; font-size: 13px; text-transform: uppercase;">Vaso de salsa</figcaption></figure>
+        <figure style="margin: 0px; display: flex; flex-direction: column; gap: 8px;"><img src="../assets/d90a076b41ec5dd9383301bc354ebd36.jpg" alt="Vaso de bebida con logo" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; display: block;"><figcaption style="font-weight: 800; font-size: 13px; text-transform: uppercase;">Vaso de bebida</figcaption></figure>
+        <figure style="margin: 0px; display: flex; flex-direction: column; gap: 8px;"><img src="../assets/72c5950f4a8f45c5a8edac02d158144d.jpg" alt="Letrero redondo del local" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; display: block;"><figcaption style="font-weight: 800; font-size: 13px; text-transform: uppercase;">Letrero</figcaption></figure>
+        <figure style="margin: 0px; display: flex; flex-direction: column; gap: 8px;"><img src="../assets/6e9e2df56d4a670467942acc72fc16f6.jpg" alt="Post: Dense. Borderline illegal." style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; display: block;"><figcaption style="font-weight: 800; font-size: 13px; text-transform: uppercase;">Post de redes</figcaption></figure>
+        <figure style="margin: 0px; display: flex; flex-direction: column; gap: 8px;"><img src="../assets/a9656a1e5745079a2bf008dd5e44d74f.jpg" alt="Camiseta con el logo en la espalda" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; display: block;"><figcaption style="font-weight: 800; font-size: 13px; text-transform: uppercase;">Camiseta</figcaption></figure>
+      </div>
+      <div style="font-size: 14px; color: rgb(138, 129, 114);">Aplicaciones de concepto renderizadas con IA. El empaque real en uso aparece en la sesión de fotos.</div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 28px; padding: clamp(20px, 3vw, 36px); border-radius: 26px; background: rgb(26, 20, 17); color: rgb(255, 244, 224);">
+        <div style="flex: 1 1 280px; min-width: 0px; display: flex; flex-direction: column; gap: 14px;">
+          <span style="font-weight: 900; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgb(246, 190, 0);">Moodboard · sesión en Malta</span>
+          <div style="font-family: &quot;Bagel Fat One&quot;, sans-serif; font-size: clamp(32px, 3.6vw, 46px); line-height: 0.92;">Sol fuerte, rojo en todas partes.</div>
+          <p style="margin: 0px; color: rgba(255, 244, 224, 0.78);">Armado con la sesión real: producto sobre rojo, vida en la calle y el local. Sombras duras y color saturado.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;">
+            <span style="font-weight: 900; font-size: 13px; text-transform: uppercase; background: rgb(214, 40, 40); padding: 7px 14px; border-radius: 999px;">Street</span>
+            <span style="font-weight: 900; font-size: 13px; text-transform: uppercase; background: rgb(246, 190, 0); color: rgb(26, 20, 17); padding: 7px 14px; border-radius: 999px;">Sunny</span>
+            <span style="font-weight: 900; font-size: 13px; text-transform: uppercase; background: rgb(76, 154, 42); padding: 7px 14px; border-radius: 999px;">Cheeky</span>
+            <span style="font-weight: 900; font-size: 13px; text-transform: uppercase; background: rgb(231, 111, 42); padding: 7px 14px; border-radius: 999px;">Late night</span>
+            <span style="font-weight: 900; font-size: 13px; text-transform: uppercase; background: rgb(255, 244, 224); color: rgb(26, 20, 17); padding: 7px 14px; border-radius: 999px;">Shareable</span>
+          </div>
+          <div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgba(255, 244, 224, 0.6);">Fotos: Kevin Cano, usadas con su permiso.</div>
+        </div>
+        <div class="fr-mood" style="flex: 2.4 1 560px; min-width: 0px; display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); grid-template-rows: repeat(3, 170px); gap: 12px;">
+          <div style="grid-row: 1 / span 2; border: 5px solid rgb(255, 244, 224); border-radius: 12px; overflow: hidden; transform: rotate(-1.5deg);"><img src="../assets/a6f73aa3bdaeee01b3c931b1b6f74736.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+          <div style="border: 5px solid rgb(255, 244, 224); border-radius: 12px; overflow: hidden; transform: rotate(1.5deg);"><img src="../assets/4fd144ed151e60d569928c005972ceb0.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+          <div style="grid-column: 3 / span 2; border: 5px solid rgb(255, 244, 224); border-radius: 12px; overflow: hidden; transform: rotate(-1deg);"><img src="../assets/0650c6c8727a6cd1090fa913df62eced.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+          <div style="border: 5px solid rgb(255, 244, 224); border-radius: 12px; overflow: hidden; transform: rotate(-1deg);"><img src="../assets/5c2af39d6644ec5fffd0ed3dbc243dc8.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+          <div style="border: 5px solid rgb(255, 244, 224); border-radius: 12px; overflow: hidden; transform: rotate(1deg);"><img src="../assets/c278b6e6c50577954f1632d191640902.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+          <div style="grid-area: 2 / 4 / span 2; border: 5px solid rgb(255, 244, 224); border-radius: 12px; overflow: hidden; transform: rotate(1.5deg);"><img src="../assets/e6855ee4e0dcac53f43d8334ba5e3460.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block;"></div>
+          <div style="border: 5px solid rgb(255, 244, 224); border-radius: 12px; overflow: hidden; transform: rotate(1deg);"><img src="../assets/d7f04f0e37763e95013ccc7f5b5fbf8f.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+          <div style="border: 5px solid rgb(255, 244, 224); border-radius: 12px; overflow: hidden; transform: rotate(-1.5deg);"><img src="../assets/fc9ee3eb70ce5aa3fa3d095ab19d8f41.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+          <div style="border: 5px solid rgb(255, 244, 224); border-radius: 12px; overflow: hidden; transform: rotate(1deg);"><img src="../assets/044526ea6cef3ac7c408087f7af673a7.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        </div>
+      </div>
+    </section>
+
+    
+    <section style="display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 8px; max-width: 760px;">
+        <div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(107, 90, 78);">Cómo lo hice con IA</div>
+        <h2 style="margin: 0px; font-family: &quot;Bagel Fat One&quot;, sans-serif; font-weight: 400; font-size: clamp(36px, 4.2vw, 56px); line-height: 1;">La IA como flujo de producción.</h2>
+      </div>
+      <ol style="margin: 0px; padding: 0px; list-style: none; display: flex; flex-direction: column; border-radius: 22px; overflow: hidden; background: rgb(255, 255, 255); border: 2px solid rgb(26, 20, 17);">
+        <li style="display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; padding: 20px 24px; border-bottom: 2px solid rgb(255, 244, 224);"><span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; color: rgb(214, 40, 40); min-width: 28px;">01</span><span style="flex: 1 1 240px; font-weight: 800;">Contexto maestro</span><span style="flex: 2 1 320px; color: rgb(74, 59, 50);">Un solo archivo con estrategia, voz, paleta, assets y decisiones abiertas.</span><span style="padding: 4px 12px; border-radius: 999px; background: rgb(246, 190, 0); font-weight: 800; font-size: 13px;">Claude</span></li>
+        <li style="display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; padding: 20px 24px; border-bottom: 2px solid rgb(255, 244, 224);"><span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; color: rgb(214, 40, 40); min-width: 28px;">02</span><span style="flex: 1 1 240px; font-weight: 800;">Primera exploración</span><span style="flex: 2 1 320px; color: rgb(74, 59, 50);">Brand board inicial con Frankie y la paleta roja.</span><span style="padding: 4px 12px; border-radius: 999px; background: rgb(246, 190, 0); font-weight: 800; font-size: 13px;">ChatGPT</span></li>
+        <li style="display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; padding: 20px 24px; border-bottom: 2px solid rgb(255, 244, 224);"><span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; color: rgb(214, 40, 40); min-width: 28px;">03</span><span style="flex: 1 1 240px; font-weight: 800;">Sistema e interfaces</span><span style="flex: 2 1 320px; color: rgb(74, 59, 50);">Tokens, componentes, brand board, app de delivery, carta, pantalla interactiva y el caso completo.</span><span style="padding: 4px 12px; border-radius: 999px; background: rgb(246, 190, 0); font-weight: 800; font-size: 13px;">Claude Design</span></li>
+        <li style="display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; padding: 20px 24px; border-bottom: 2px solid rgb(255, 244, 224);"><span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; color: rgb(214, 40, 40); min-width: 28px;">04</span><span style="flex: 1 1 240px; font-weight: 800;">Frankie en 3D</span><span style="flex: 2 1 320px; color: rgb(74, 59, 50);">Imágenes del personaje y pruebas de video caminando. Exploración.</span><span style="padding: 4px 12px; border-radius: 999px; background: rgb(246, 190, 0); font-weight: 800; font-size: 13px;">OpenArt · PixVerse</span></li>
+        <li style="display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; padding: 20px 24px;"><span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; color: rgb(214, 40, 40); min-width: 28px;">05</span><span style="flex: 1 1 240px; font-weight: 800;">Skills reutilizables</span><span style="flex: 2 1 320px; color: rgb(74, 59, 50);">Un SKILL.md para que cualquier IA diseñe dentro de la marca, y otra skill para gastar menos créditos al generar.</span><span style="padding: 4px 12px; border-radius: 999px; background: rgb(246, 190, 0); font-weight: 800; font-size: 13px;">Claude</span></li>
+      </ol>
+    </section>
+
+    
+    <section style="display: flex; flex-wrap: wrap; gap: 16px;">
+      <div style="flex: 1 1 300px; min-width: 0px; padding: 28px; border-radius: 22px; background: rgb(214, 40, 40); color: rgb(255, 244, 224); display: flex; flex-direction: column; gap: 8px;">
+        <div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(246, 190, 0);">Resultado</div>
+        <div style="font-weight: 800; font-size: 24px; line-height: 1.15;">Una marca que habla igual en el local, en el delivery y en redes: estrategia, Frankie, sistema de diseño y tres interfaces listas.</div>
+      </div>
+      <div style="flex: 1 1 300px; min-width: 0px; padding: 28px; border-radius: 22px; background: rgb(255, 255, 255); border: 2px solid rgb(26, 20, 17); display: flex; flex-direction: column; gap: 8px;">
+        <div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(107, 90, 78);">Lo que aprendí</div>
+        <div>El producto ya era bueno; lo que faltaba era que la marca hablara igual en el local, en el delivery y en redes.</div>
+      </div>
+      <div style="flex: 1 1 300px; min-width: 0px; padding: 28px; border-radius: 22px; background: rgb(255, 255, 255); border: 2px solid rgb(26, 20, 17); display: flex; flex-direction: column; gap: 8px;">
+        <div style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(107, 90, 78);">Próximo paso</div>
+        <div>Cerrar el nombre del personaje, Frank o Frankie, y poner a funcionar la carta, la app y la pantalla del local.</div>
+      </div>
+    </section>
+
+  </div>
+  </div>
+
+  
+  <section style="background: rgb(7, 6, 11); color: rgb(255, 255, 255); padding-inline: clamp(16px, 4vw, 56px); padding-block: 48px;">
+    <div style="max-width: 1280px; margin: 0px auto; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <a href="paws.html" style="display: inline-flex; align-items: center; min-height: 48px; padding: 0px 20px; border-radius: 10px; border: 1px solid rgb(58, 53, 66); color: rgb(228, 230, 234); font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 13px; text-decoration: none;">← Mundo 02 · Paws</a>
+      <a href="boom.html" style="display: flex; align-items: center; gap: 20px; text-decoration: none;"><div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px;"><span style="font-family: &quot;IBM Plex Mono&quot;, monospace; font-size: 12px; color: rgb(36, 196, 240);">Siguiente mundo · 04</span><span style="font-family: Bangers, Impact, sans-serif; font-size: 44px; line-height: 1; letter-spacing: 0.02em; color: rgb(245, 23, 158);">Boom ICE →</span></div><img src="../assets/cab593b222fb1a534ecc628a3641b3af.jpg" alt="Logo de Boom ICE" style="width: 96px; height: 88px; object-fit: cover; border-radius: 16px;"></a>
+    </div>
+  </section></div></div></div>
+<nav class="jt-bar" aria-label="Versiones e idioma"><a href="franks.html" lang="es" hreflang="es" aria-current="page">ES</a><a href="en/franks.html" lang="en" hreflang="en">EN</a><a class="jt-3d" href="../#es">Universo 3D ↗</a></nav>
+</body>
+</html>
