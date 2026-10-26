@@ -37,4 +37,4 @@ Sitio estático: no necesita compilar. Static site, no build step.
 
 ---
 
-© Johan Torres · [LinkedIn](https://www.linkedin.com/in/johan-torres-6aa140209) · [Instagram](https://www.instagram.com/johantorres421tu) · johan.tocu@gmail.com
+© Johan Torres · [LinkedIn](https://www.linkedin.com/in/johantocu) · [Instagram](https://www.instagram.com/johantorres421tu) · johan.tocu@gmail.com
