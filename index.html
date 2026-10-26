@@ -239,7 +239,7 @@ canvas:active{cursor:grabbing}
   document.getElementById("rbtn").addEventListener("click", e => { e.stopPropagation(); setRadio(!radioOn, true); });
   // el mismo portafolio en 2D: en la web vive en /2d; en la vista previa de Claude abre el lienzo
   { const v2 = document.getElementById("v2d"), inClaude = /(^|\.)claude\.ai$|claudeusercontent|anthropic/.test(location.hostname) || !/^https?:$/.test(location.protocol);
-    v2.href = inClaude ? "https://claude.ai/artifact/19yv9wB8bKuoHCjMJws5KT" : (LANG === "en" ? "2d/en/" : "2d/"); if (inClaude) { v2.target = "_blank"; v2.rel = "noopener"; }
+    v2.href = inClaude ? "https://claude.ai/artifact/19yv9wB8bKuoHCjMJws5KT" : (LANG === "en" ? "/2d/en/" : "/2d/"); if (inClaude) { v2.target = "_blank"; v2.rel = "noopener"; }
     v2.addEventListener("click", e => e.stopPropagation()); }
   const camsEl = document.getElementById("cams");
   camsEl.querySelectorAll("button").forEach((b, i) => b.addEventListener("click", e => { e.stopPropagation(); setCamMode(i); }));
