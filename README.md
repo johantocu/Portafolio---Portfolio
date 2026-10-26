@@ -1,6 +1,6 @@
 # Portafolio / Portfolio · Johan Torres
 
-**Diseño de marca × desarrollo web.** Marcas con riesgo, construidas con ingeniería.
+**Diseño de marca × desarrollo web.** Marcas atrevidas, construidas con ingeniería.
 **Brand design × web development.** Brands that dare, built with engineering.
 
 ## Dos formas de verlo · Two ways to see it
