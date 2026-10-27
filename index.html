@@ -189,7 +189,12 @@ canvas:active{cursor:grabbing}
 #focus.light{--fc:#17141A;--fcm:rgba(23,20,26,.2)}
 #focus .fbg{position:absolute;inset:0;opacity:0;transition:opacity .4s ease,background-color .35s ease}
 #focus.on .fbg{opacity:1}
-#focus .fimg{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;will-change:transform;pointer-events:none;-webkit-user-drag:none;border-radius:2px}
+#focus .fimg{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform;pointer-events:none}
+#focus .fpic{display:block;width:100%;height:100%;max-width:none;-webkit-user-drag:none;border-radius:2px}
+#focus .flive{position:absolute}
+#focus .flive[hidden]{display:none}
+#focus .flive img{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .35s ease}
+#focus .flive img.on{opacity:1}
 #focus .ftop{position:absolute;z-index:2;left:0;right:0;top:0;padding:calc(12px + env(safe-area-inset-top,0px)) calc(60px + env(safe-area-inset-right,0px)) 0 calc(14px + env(safe-area-inset-left,0px));opacity:0;transition:opacity .3s ease .2s;pointer-events:none}
 #focus .fbar{display:flex;gap:3px}
 #focus .fbar i{flex:1;height:3px;border-radius:2px;background:var(--fcm);transition:background-color .25s}
@@ -282,22 +287,6 @@ canvas:active{cursor:grabbing}
   </div>
 </div>
 
-<script>
-/* Solo en el link de prueba: muestra la versión y cualquier error en pantalla para poder revisarlo desde el celular. */
-(function () {
-  if (!/-git-/.test(location.hostname) && !/[?&]debug=1/.test(location.search)) return;
-  var BUILD = "prueba 27 oct · 14:30";
-  function box() { var b = document.getElementById("dbgbox"); if (!b) { b = document.createElement("div"); b.id = "dbgbox"; b.style.cssText = "position:fixed;left:8px;right:8px;bottom:8px;z-index:9999;max-height:40vh;overflow:auto;background:#B00020;color:#fff;font:12px/1.35 monospace;padding:8px 10px;border-radius:8px;white-space:pre-wrap"; document.body.appendChild(b); } return b; }
-  function show(m) { try { box().textContent += m + "\n"; } catch (e) {} }
-  window.addEventListener("error", function (e) { show("Error: " + e.message + " (" + (e.filename || "").split("/").pop() + ":" + e.lineno + ")"); });
-  window.addEventListener("unhandledrejection", function (e) { show("Promesa: " + (e.reason && (e.reason.message || e.reason))); });
-  document.addEventListener("DOMContentLoaded", function () {
-    var t = document.createElement("div"); t.textContent = BUILD + (window.matchMedia("(pointer:coarse)").matches ? " · táctil" : " · mouse");
-    t.style.cssText = "position:fixed;left:50%;transform:translateX(-50%);bottom:calc(2px + env(safe-area-inset-bottom,0px));z-index:9998;font:10px monospace;color:#fff;opacity:.55;pointer-events:none;white-space:nowrap";
-    document.body.appendChild(t);
-  });
-})();
-</script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script>
 (function(){
@@ -2619,10 +2608,10 @@ canvas:active{cursor:grabbing}
     if (touch) pinchTold = true;
     const F = document.createElement("div"); F.id = "focus"; F.hidden = true;
     F.setAttribute("role", "dialog"); F.setAttribute("aria-modal", "true");
-    F.innerHTML = '<div class="fbg"></div><img class="fimg" alt="" draggable="false"><div class="ftop"><div class="fbar"></div><div class="fmeta"><b></b><span></span></div></div>'
+    F.innerHTML = '<div class="fbg"></div><div class="fimg"><img class="fpic" alt="" draggable="false"><div class="flive" hidden><img alt=""><img alt=""></div></div><div class="ftop"><div class="fbar"></div><div class="fmeta"><b></b><span></span></div></div>'
       + '<button type="button" class="fx">✕</button><div class="fend" hidden><p class="fendk"></p><h2 class="fendt"></h2><button type="button" class="fgo"></button><button type="button" class="fagain"></button></div><div class="fhint" hidden></div>';
     document.body.appendChild(F);
-    const fBg = F.querySelector(".fbg"), fImg = F.querySelector(".fimg"), fTop = F.querySelector(".ftop"), fBar = F.querySelector(".fbar"), fNum = F.querySelector(".fmeta b"), fLab = F.querySelector(".fmeta span");
+    const fBg = F.querySelector(".fbg"), fImg = F.querySelector(".fimg"), fPic = F.querySelector(".fpic"), fLive = F.querySelector(".flive"), fTop = F.querySelector(".ftop"), fBar = F.querySelector(".fbar"), fNum = F.querySelector(".fmeta b"), fLab = F.querySelector(".fmeta span");
     const fX = F.querySelector(".fx"), fEnd = F.querySelector(".fend"), fGo = F.querySelector(".fgo"), fAgain = F.querySelector(".fagain"), fHint = F.querySelector(".fhint");
     fX.setAttribute("aria-label", tx("Cerrar la presentación"));
     let fOpen = false, dk = null, fit = null, fTok = 0, fsByUs = false, fWait = 0;
@@ -2644,6 +2633,7 @@ canvas:active{cursor:grabbing}
         kind: "world", W, acc: W.acc, kick: W.label, title: W.short,
         n: () => PASOS[W.id].length, idx: () => stepIndex(W, W.pos), d: i => PASOS[W.id][i],
         canNext: () => !!nextPos(W, W.pos), canPrev: () => W.hist.length > 0,
+        live: () => LIVE[W.id + ":" + stepIndex(W, W.pos)] || null,
         next: () => goStep(W, 1), prev: () => goStep(W, -1),
         restart: () => { W.hist = []; setPos(W, { seg: W.segs.intro ? "intro" : "main", i: 0 }, -1); },
         rect: () => { const S = W.scr; if (!S) return null; const h = S.hCur || 7; return project([[-SCR.w / 2, SCR.y0, S.z0], [SCR.w / 2, SCR.y0, S.z0], [-SCR.w / 2, SCR.y0 + h, S.z0], [SCR.w / 2, SCR.y0 + h, S.z0]].map(p => [S.dir * p[0], p[1], p[2]])); },
@@ -2689,10 +2679,21 @@ canvas:active{cursor:grabbing}
       fLab.textContent = tx(dk.title) + " · " + tx(d.label);
     }
     function setSrc(d) {
-      fImg.src = d.f; fImg.style.width = fit.w + "px"; fImg.style.height = fit.h + "px";
+      fPic.src = d.f; fImg.style.width = fit.w + "px"; fImg.style.height = fit.h + "px"; liveF(d);
       const nx = dk.d(dk.idx() + 1); if (nx) { const im = new Image(); im.src = nx.f; }
-      const dec = fImg.decode ? fImg.decode().catch(() => {}) : new Promise(r => { if (fImg.complete) r(); else { fImg.onload = r; fImg.onerror = r; } });
+      const dec = fPic.decode ? fPic.decode().catch(() => {}) : new Promise(r => { if (fPic.complete) r(); else { fPic.onload = r; fPic.onerror = r; } });
       return Promise.race([dec, new Promise(r => setTimeout(r, 700))]);
+    }
+    let liveT = 0;
+    function liveF(d) {
+      clearTimeout(liveT); fLive.hidden = true;
+      const L0 = dk && dk.live ? dk.live() : null; if (!L0) return;
+      const r = L0.r, ims = fLive.querySelectorAll("img"); let i = L0.start || 0, top = 0;
+      Object.assign(fLive.style, { left: r[0] / d.w * 100 + "%", top: r[1] / d.h * 100 + "%", width: r[2] / d.w * 100 + "%", height: r[3] / d.h * 100 + "%" });
+      L0.frames.forEach(f => { const im = new Image(); im.src = f; });
+      ims[0].src = L0.frames[i]; ims[0].classList.add("on"); ims[1].classList.remove("on"); fLive.hidden = false;
+      const tick = () => { i = (i + 1) % L0.frames.length; const nb = ims[1 - top]; nb.src = L0.frames[i]; nb.classList.add("on"); ims[top].classList.remove("on"); top = 1 - top; liveT = setTimeout(tick, L0.dwell[i] * 1000); };
+      liveT = setTimeout(tick, L0.dwell[i] * 1000);
     }
     function showStepF(dir) {
       const tok = ++fTok, d = curD();
@@ -2763,7 +2764,7 @@ canvas:active{cursor:grabbing}
     }
     function closeF(o) {
       o = o || {}; if (!fOpen) return;
-      fOpen = false; fTok++; window.__focusCover = false; clearTimeout(fWait);
+      fOpen = false; fTok++; window.__focusCover = false; clearTimeout(fWait); clearTimeout(liveT);
       if (!o.fromPop) { try { if (history.state && history.state.jtFocus) history.back(); } catch (e) {} }
       if (!o.keepFs) leaveFs();
       const deck = dk, done = () => { F.hidden = true; fImg.getAnimations().forEach(a => a.cancel()); if (deck.kind === "world" && reading) { setReading(false); updNav(); } if (o.then) o.then(); };
@@ -2784,7 +2785,7 @@ canvas:active{cursor:grabbing}
       e.preventDefault(); e.stopImmediatePropagation();
     }, true);
     // en el celular: al entrar a leer un mundo, esperar a que la diapositiva se arme en 3D y entonces acercarla
-    if (touch) window.__onReading = on => {
+    window.__onReading = on => {
       clearTimeout(fWait);
       if (!on) { if (fOpen && dk && dk.kind === "world") closeF({ instant: true }); return; }
       const t0w = performance.now();
