@@ -1419,6 +1419,9 @@ canvas:active{cursor:grabbing}
   // ---------- Mundos recorridos: el contador del HUD y el piso que señala por dónde seguir ----------
   const ORDER = ["fut", "paws", "franks", "boom"];
   let visited = [], talkSeen = false, storySeen = false, storyNext = false;
+  // Cada vez que se carga la página, el recorrido empieza desde el inicio.
+  // Solo se conserva al recargar por dentro (cambio de idioma o de recorrido corto/completo).
+  try { if (!sessionStorage.getItem("jt-skipintro")) ["jt-mundos", "jt-historia", "jt-hablemos"].forEach(k => localStorage.removeItem(k)); } catch (e) {}
   try { storySeen = localStorage.getItem("jt-historia") === "1"; } catch (e) {}
   function setStorySeen() { storySeen = true; try { localStorage.setItem("jt-historia", "1"); } catch (e) {} }
   // al terminar los mundos, primero Mi historia y después Hablemos
@@ -2596,7 +2599,7 @@ canvas:active{cursor:grabbing}
     let again = false, st = null, force = false, seen = false;
     try { again = !!sessionStorage.getItem("jt-skipintro"); sessionStorage.removeItem("jt-skipintro"); force = !!sessionStorage.getItem("jt-forceintro"); sessionStorage.removeItem("jt-forceintro"); st = JSON.parse(sessionStorage.getItem("jt-state") || "null"); sessionStorage.removeItem("jt-state"); seen = localStorage.getItem("jt-intro") === "1"; } catch (e) {}
     try { if (/[?&]intro=1\b/.test(location.search)) force = true; } catch (e) {}
-    skipBuild = !force && (again || seen);
+    skipBuild = !force && again;
     if (again && st) worldFonts().then(() => { pendingRestore = st; });
     if (skipBuild) { let n = 0; const iv = setInterval(() => { if (t0 < 1e8) { onSkip(); clearInterval(iv); } else if (++n > 90) clearInterval(iv); }, 150); }
   });
