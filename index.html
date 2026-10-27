@@ -210,6 +210,10 @@ canvas:active{cursor:grabbing}
 #focus .fendt{margin:0 0 14px;font:800 32px/1.05 var(--display);font-stretch:120%}
 #focus .fgo{min-height:56px;padding:0 26px;border:0;border-radius:999px;font:700 16px var(--body);cursor:pointer;max-width:100%}
 #focus .fagain{min-height:46px;padding:0 20px;border:1px solid var(--fcm);border-radius:999px;background:transparent;color:var(--fc);font:500 14px var(--body);cursor:pointer}
+#focus .fmore{position:absolute;left:0;right:0;bottom:0;height:72px;background:linear-gradient(rgba(0,0,0,0),var(--fbg,#000));opacity:0;transition:opacity .3s;pointer-events:none;display:flex;align-items:flex-end;justify-content:center;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+#focus .fmore.show{opacity:1}
+#focus .fmore span{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(10,12,16,.6);color:#F2F4F7;font:600 14px var(--body);animation:fbob 1.4s ease-in-out infinite}
+@keyframes fbob{50%{transform:translateY(4px)}}
 #focus .fhint{position:absolute;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);padding:10px 16px;border-radius:999px;background:rgba(10,12,16,.82);color:#F2F4F7;font:500 13px/1.35 var(--body);width:max-content;max-width:calc(100% - 40px);text-align:center;border-radius:16px;opacity:0;transition:opacity .4s;pointer-events:none}
 #focus .fhint.show{opacity:1}
 #focus .fhint[hidden]{display:none}
@@ -1151,6 +1155,8 @@ canvas:active{cursor:grabbing}
 
   // ---------- La pantalla: el tablero del proyecto, pieza por pieza ----------
   const SCR = { z: -8.4, y0: 0.9, w: MOB ? 6.6 : 16 };
+  // Hablemos, acostado al final de la página, ocupa el mismo ancho que el contenido (márgenes de 80 px sobre 1440)
+  const FOOT_K = (PAGE.w * 1280 / 1440) / SCR.w;
   const UPX = SCR.w / (MOB ? 430 : 1440);
   const stepCache = new Map();
   function loadStep(wid, i) {
@@ -1709,7 +1715,7 @@ canvas:active{cursor:grabbing}
     let rows = st.els.filter(e => e[2] > 0.3 * (st.w || 1440) && e[3] < 80).sort((a, b) => a[1] - b[1]);
     if (rows.length !== CONTACTS.length) rows = CONTACTS.map((c, i) => [786, 89 + i * 64, 525, 54]);
     rows.forEach((e, i) => {
-      const x = (e[0] + e[2] / 2) * UPX - SCR.w / 2, z = HB.gz - (dh - e[1] - e[3] / 2) * UPX, w = e[2] * UPX, d = e[3] * UPX;
+      const K = FOOT_K, x = ((e[0] + e[2] / 2) * UPX - SCR.w / 2) * K, z = HB.gz - (dh - e[1] - e[3] / 2) * UPX * K, w = e[2] * UPX * K, d = e[3] * UPX * K;
       const fillG = new THREE.ShapeGeometry(rrShape(w + 0.08, d + 0.06, 0.12)); fillG.rotateX(-Math.PI / 2);
       const fill = new THREE.Mesh(fillG, new THREE.MeshBasicMaterial({ color: 0x2FD8C5, transparent: true, opacity: 0.05, toneMapped: false, depthWrite: false, blending: THREE.AdditiveBlending }));
       fill.position.set(x, TOP + 0.034, z); fill.renderOrder = 4; HB.g.add(fill);
@@ -2068,7 +2074,7 @@ canvas:active{cursor:grabbing}
   }
   // En el celular, al llegar a Hablemos la cámara encuadra la tarjeta de contacto al ancho de la pantalla
   const talkPos = new THREE.Vector3(), talkLook = new THREE.Vector3(); let talkKey = "";
-  function talkCard() { const S = WORLDS.historia.scr; if (!HB || !S) return null; const h = S.hT || 7; return { x0: -SCR.w / 2, x1: SCR.w / 2, z0: HB.gz - h, z1: HB.gz }; }
+  function talkCard() { const S = WORLDS.historia.scr; if (!HB || !S) return null; const h = (S.hT || 7) * FOOT_K; return { x0: -SCR.w * FOOT_K / 2, x1: SCR.w * FOOT_K / 2, z0: HB.gz - h, z1: HB.gz }; }
   function inTalk() { if (!coarse.matches || world !== "station" || !finaleDone || finale || reading || travel) return false; const c = talkCard(); return !!c && pos.y > c.z0 - 0.6; }
   window.__talk = () => ({ on: inTalk(), py: +pos.y.toFixed(2), card: talkCard(), tp: talkPos.toArray().map(v => +v.toFixed(1)), tl: talkLook.toArray().map(v => +v.toFixed(1)), eff: effPrev, done: finaleDone, view: finaleView, world, ndc: (() => { const c = talkCard(); if (!c) return null; return [[c.x0, c.z0], [c.x1, c.z0], [c.x0, c.z1], [c.x1, c.z1]].map(q => { const v = new THREE.Vector3(q[0], TOP, q[1]).project(camera); return [+v.x.toFixed(2), +v.y.toFixed(2)]; }); })() });
   function talkPose() {
@@ -2193,7 +2199,7 @@ canvas:active{cursor:grabbing}
     W.t0 = now + 1e4;
     const h = S.hT;
     CR.z = CR.z0 = CR.zJ; crane = buildCrane(); crane.root.position.set(CR.x, TOP + 24, CR.z);
-    HB = buildHBPlate(h); HB.g.visible = false; finKey = "";
+    HB = buildHBPlate(h * FOOT_K); HB.g.visible = false; finKey = "";
     // rieles junto a toda la página: la grúa la recorre de arriba abajo
     const rz0 = CR.zJ - 2.2, rz1 = HB.z1 + 0.6, rl = rz1 - rz0, rails = new THREE.Group(); rails.position.set(CR.x, TOP, (rz0 + rz1) / 2); scene.add(rails); crane.rails = rails;
     [-0.85, 0.85].forEach(dx => rails.add(mesh(rbox(0.14, 0.12, rl, 0.02, 0.01), jtMat, dx, 0.06, 0)));
@@ -2252,7 +2258,7 @@ canvas:active{cursor:grabbing}
         if (!F.took) { F.took = true; W.drops = W.drops.filter(d => d.obj !== S.g); }
         const lift = P(BT.take, 5.3) * 2.2, mv = P(5.3, 5.9), tip = P(5.9, BT.land);
         const gz = HSZ + (HB.gz - HSZ) * mv, gy = SCR.y0 + lift + (TOP + 0.02 - SCR.y0 - lift) * tip;
-        S.g.position.set(0, gy, gz); S.g.rotation.set(-Math.PI / 2 * tip, Math.PI * (1 - mv), 0);
+        S.g.position.set(0, gy, gz); S.g.rotation.set(-Math.PI / 2 * tip, Math.PI * (1 - mv), 0); S.g.scale.setScalar(1 + (FOOT_K - 1) * tip);
         if (tip > 0.02 && !S.flat) screenFlat(S, true);
         S.g.updateMatrixWorld(true); vTmp.set(0, h / 2, 0.4); S.g.localToWorld(vTmp);
         hx = 0; hz = vTmp.z; hy = Math.max(vTmp.y + 1.1, gy + 1.1 + (1 - tip) * h * 0.5);
@@ -2279,7 +2285,7 @@ canvas:active{cursor:grabbing}
     const F = finale; if (!F) return;
     const W = F.W, S = F.S, now = clock.getElapsedTime();
     W.drops = W.drops.filter(d => d.obj !== S.g); W.t0 = now - 60; W.drops.forEach(d => { d.thudDone = true; });
-    S.g.visible = true; S.g.position.set(0, TOP + 0.02, HB.gz); S.g.rotation.set(-Math.PI / 2, 0, 0); screenFlat(S, true); screenMelt(S);
+    S.g.visible = true; S.g.position.set(0, TOP + 0.02, HB.gz); S.g.rotation.set(-Math.PI / 2, 0, 0); S.g.scale.setScalar(FOOT_K); screenFlat(S, true); screenMelt(S);
     HB.g.position.y = 0; HB.g.visible = world === "station";
     if (crane) { scene.remove(crane.root); if (crane.rails) scene.remove(crane.rails); crane = null; }
     if (!jtFilled) jtSettle();
@@ -2320,9 +2326,9 @@ canvas:active{cursor:grabbing}
   function finaleInstant() {
     const W = WORLDS.historia, S = W.scr; if (!S || finaleDone) return;
     W.on = true; W.pos = { seg: "main", i: W.segs.main.length - 1 }; S.instant = true; showStep(W, stepIndex(W, W.pos), 1);
-    const h = S.hT; HB = buildHBPlate(h); HB.g.position.y = 0; W.drops = W.drops.filter(d => d.obj !== S.g); S.g.visible = true;
+    const h = S.hT; HB = buildHBPlate(h * FOOT_K); HB.g.position.y = 0; W.drops = W.drops.filter(d => d.obj !== S.g); S.g.visible = true;
     W.tg.rotation.y = 0; W.tg.position.y = 0; flipHistPads();
-    S.g.position.set(0, TOP + 0.02, HB.gz); S.g.rotation.set(-Math.PI / 2, 0, 0); screenFlat(S, true); screenMelt(S);
+    S.g.position.set(0, TOP + 0.02, HB.gz); S.g.rotation.set(-Math.PI / 2, 0, 0); S.g.scale.setScalar(FOOT_K); screenFlat(S, true); screenMelt(S);
     if (jt && square) jtSettle();
     buildContactPads();
     finaleDone = true; aerKey = ""; finKey = "";
@@ -2612,10 +2618,10 @@ canvas:active{cursor:grabbing}
     const F = document.createElement("div"); F.id = "focus"; F.hidden = true;
     F.setAttribute("role", "dialog"); F.setAttribute("aria-modal", "true");
     F.innerHTML = '<div class="fbg"></div><div class="fimg"><img class="fpic" alt="" draggable="false"><div class="flive" hidden><img alt=""><img alt=""></div></div><div class="ftop"><div class="fbar"></div><div class="fmeta"><b></b><span></span></div></div>'
-      + '<button type="button" class="fx">✕</button><div class="fend" hidden><p class="fendk"></p><h2 class="fendt"></h2><button type="button" class="fgo"></button><button type="button" class="fagain"></button></div><div class="fhint" hidden></div>';
+      + '<button type="button" class="fx">✕</button><div class="fend" hidden><p class="fendk"></p><h2 class="fendt"></h2><button type="button" class="fgo"></button><button type="button" class="fagain"></button></div><div class="fhint" hidden></div><div class="fmore" aria-hidden="true"><span>↓</span></div>';
     document.body.appendChild(F);
     const fBg = F.querySelector(".fbg"), fImg = F.querySelector(".fimg"), fPic = F.querySelector(".fpic"), fLive = F.querySelector(".flive"), fTop = F.querySelector(".ftop"), fBar = F.querySelector(".fbar"), fNum = F.querySelector(".fmeta b"), fLab = F.querySelector(".fmeta span");
-    const fX = F.querySelector(".fx"), fEnd = F.querySelector(".fend"), fGo = F.querySelector(".fgo"), fAgain = F.querySelector(".fagain"), fHint = F.querySelector(".fhint");
+    const fX = F.querySelector(".fx"), fEnd = F.querySelector(".fend"), fGo = F.querySelector(".fgo"), fAgain = F.querySelector(".fagain"), fHint = F.querySelector(".fhint"), fMore = F.querySelector(".fmore");
     fX.setAttribute("aria-label", tx("Cerrar la presentación"));
     let fOpen = false, dk = null, fit = null, fTok = 0, fsByUs = false, fWait = 0;
     const zm = { k: 1, x: 0, y: 0 }, pv = new THREE.Vector3();
@@ -2657,21 +2663,29 @@ canvas:active{cursor:grabbing}
       };
     }
     const curD = () => dk.d(dk.idx());
+    // diapositivas altas: en vez de achicarlas, llenan el ancho y se recorren hacia abajo
+    let sy = 0;
     function layout(d) {
-      const vw = window.innerWidth, vh = window.innerHeight, top = fTop.getBoundingClientRect().bottom + 10, bot = 14;
-      const sc = Math.min(vw / d.w, (vh - top - bot) / d.h), w = d.w * sc, h = d.h * sc;
-      return { x: (vw - w) / 2, y: top + Math.max(0, (vh - top - bot - h) / 2), w, h };
+      const vw = window.innerWidth, vh = window.innerHeight, top = fTop.getBoundingClientRect().bottom + 10, bot = 14, av = vh - top - bot;
+      const sw = Math.min(vw / d.w, touch ? 9 : 1.2), sh = av / d.h;
+      if (sh >= sw * 0.75) { const sc = Math.min(sw, sh), w = d.w * sc, h = d.h * sc; return { x: (vw - w) / 2, y: top + Math.max(0, (av - h) / 2), w, h, scroll: 0, av }; }
+      const w = d.w * sw, h = d.h * sw; return { x: (vw - w) / 2, y: top, w, h, scroll: h - av, av };
+    }
+    function moreHint() { fMore.classList.toggle("show", !!fit && fit.scroll > 0 && sy < fit.scroll - 2 && zm.k < 1.02 && fEnd.hidden); }
+    function scrollTo(v, anim) {
+      const from = fImg.style.transform; sy = Math.max(0, Math.min(fit.scroll, v)); applyZ(); moreHint();
+      if (anim && !reduce) fImg.animate([{ transform: from }, { transform: fImg.style.transform }], { duration: 320, easing: "cubic-bezier(.3,.8,.3,1)" });
     }
     const tf = (x, y, k) => "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) scale(" + k.toFixed(4) + ")";
-    function applyZ() { fImg.style.transform = tf(fit.x + zm.x, fit.y + zm.y, zm.k); }
+    function applyZ() { fImg.style.transform = tf(fit.x + zm.x, fit.y - sy + zm.y, zm.k); }
     function clampZ() {
       const vw = window.innerWidth, vh = window.innerHeight, w = fit.w * zm.k, h = fit.h * zm.k;
-      let px = fit.x + zm.x, py = fit.y + zm.y;
+      let px = fit.x + zm.x, py = fit.y - sy + zm.y;
       px = w > vw ? Math.min(0, Math.max(vw - w, px)) : (vw - w) / 2;
       py = h > vh ? Math.min(0, Math.max(vh - h, py)) : Math.max(0, (vh - h) / 2);
-      zm.x = px - fit.x; zm.y = py - fit.y;
+      zm.x = px - fit.x; zm.y = py - fit.y + sy;
     }
-    function resetZ(anim) { zm.k = 1; zm.x = 0; zm.y = 0; if (anim) fImg.animate([{ transform: fImg.style.transform }, { transform: tf(fit.x, fit.y, 1) }], { duration: 220, easing: "ease-out" }); applyZ(); }
+    function resetZ(anim) { zm.k = 1; zm.x = 0; zm.y = 0; if (anim) fImg.animate([{ transform: fImg.style.transform }, { transform: tf(fit.x, fit.y - sy, 1) }], { duration: 220, easing: "ease-out" }); applyZ(); }
     function paintChrome(d) {
       F.classList.toggle("light", lum(d.bg) > 0.55);
       fBg.style.backgroundColor = d.bg;
@@ -2701,14 +2715,14 @@ canvas:active{cursor:grabbing}
     function showStepF(dir) {
       const tok = ++fTok, d = curD();
       paintChrome(d); zm.k = 1; zm.x = 0; zm.y = 0;
-      const out = fImg.animate([{ opacity: 1, transform: fImg.style.transform }, { opacity: 0, transform: tf(fit.x - dir * 36, fit.y, 1) }], { duration: reduce ? 0 : 140, easing: "ease-in", fill: "forwards" });
+      const out = fImg.animate([{ opacity: 1, transform: fImg.style.transform }, { opacity: 0, transform: tf(fit.x - dir * 36, fit.y - sy, 1) }], { duration: reduce ? 0 : 140, easing: "ease-in", fill: "forwards" });
       out.onfinish = () => {
         if (tok !== fTok) return;
-        fit = layout(d);
+        fit = layout(d); sy = 0; moreHint(); fMore.style.setProperty("--fbg", d.bg);
         setSrc(d).then(() => {
           if (tok !== fTok) return;
           out.cancel(); applyZ();
-          fImg.animate([{ opacity: 0, transform: tf(fit.x + dir * 36, fit.y, 1) }, { opacity: 1, transform: tf(fit.x, fit.y, 1) }], { duration: reduce ? 0 : 230, easing: "cubic-bezier(.2,.8,.2,1)" });
+          fImg.animate([{ opacity: 0, transform: tf(fit.x + dir * 36, fit.y - sy, 1) }, { opacity: 1, transform: tf(fit.x, fit.y - sy, 1) }], { duration: reduce ? 0 : 230, easing: "cubic-bezier(.2,.8,.2,1)" });
         });
       };
     }
@@ -2716,18 +2730,20 @@ canvas:active{cursor:grabbing}
       if (!fOpen || !dk) return;
       if (zm.k > 1.02) { resetZ(true); return; }
       if (!fEnd.hidden) { if (dir < 0) hideEnd(); return; }
+      if (fit.scroll > 0 && dir > 0 && sy < fit.scroll - 2) { scrollTo(sy + fit.av * 0.7, true); return; }
+      if (fit.scroll > 0 && dir < 0 && sy > 2) { scrollTo(sy - fit.av * 0.7, true); return; }
       if (dir > 0) {
         if (!dk.canNext()) { showEnd(); return; }
         dk.next(); showStepF(1);
       } else {
-        if (!dk.canPrev()) { fImg.animate([{ transform: tf(fit.x, fit.y, 1) }, { transform: tf(fit.x + 18, fit.y, 1) }, { transform: tf(fit.x, fit.y, 1) }], { duration: 260, easing: "ease-out" }); return; }
+        if (!dk.canPrev()) { fImg.animate([{ transform: tf(fit.x, fit.y - sy, 1) }, { transform: tf(fit.x + 18, fit.y - sy, 1) }, { transform: tf(fit.x, fit.y - sy, 1) }], { duration: 260, easing: "ease-out" }); return; }
         dk.prev(); showStepF(-1);
       }
     }
     let endAct = null;
     function showEnd() {
       const e = dk.end(), acc = "#" + new THREE.Color(dk.acc).getHexString();
-      endAct = e;
+      endAct = e; fMore.classList.remove("show");
       fEnd.querySelector(".fendk").textContent = tx(dk.kick);
       fEnd.querySelector(".fendt").textContent = tx(dk.title);
       fGo.textContent = tx(e.t);
@@ -2737,7 +2753,7 @@ canvas:active{cursor:grabbing}
       requestAnimationFrame(() => fEnd.classList.add("show"));
       [...fBar.children].forEach(el => el.classList.add("on"));
     }
-    function hideEnd() { fEnd.classList.remove("show"); fEnd.hidden = true; paintChrome(curD()); }
+    function hideEnd() { fEnd.classList.remove("show"); fEnd.hidden = true; paintChrome(curD()); moreHint(); }
     fGo.addEventListener("click", e => { e.stopPropagation(); const a = endAct; if (a) closeF({ keepFs: a.keepFs, then: a.go }); });
     fAgain.addEventListener("click", e => { e.stopPropagation(); hideEnd(); dk.restart(); showStepF(-1); });
     fX.addEventListener("click", e => { e.stopPropagation(); closeF({}); });
@@ -2747,15 +2763,15 @@ canvas:active{cursor:grabbing}
       fOpen = true; dk = deck; const d = curD();
       if (dk.kind === "story") setStorySeen();
       F.hidden = false; F.classList.remove("on"); fEnd.hidden = true; fEnd.classList.remove("show");
-      paintChrome(d); fit = layout(d); zm.k = 1; zm.x = 0; zm.y = 0;
+      paintChrome(d); fit = layout(d); sy = 0; zm.k = 1; zm.x = 0; zm.y = 0; fMore.style.setProperty("--fbg", d.bg);
       const from = dk.rect(), tok = ++fTok;
       fImg.style.opacity = "0";
       setSrc(d).then(() => {
         if (tok !== fTok || !fOpen) return;
         applyZ(); fImg.style.opacity = "1"; F.classList.add("on");
-        const a = from ? tf(from.x, from.y, from.w / fit.w) : tf(fit.x, fit.y + 24, 0.92);
-        const an = fImg.animate([{ transform: a, opacity: from ? 1 : 0 }, { transform: tf(fit.x, fit.y, 1), opacity: 1 }], { duration: reduce ? 0 : 560, easing: "cubic-bezier(.22,.9,.24,1)" });
-        an.onfinish = () => { if (fOpen) window.__focusCover = true; };
+        const a = from ? tf(from.x, from.y, from.w / fit.w) : tf(fit.x, fit.y - sy + 24, 0.92);
+        const an = fImg.animate([{ transform: a, opacity: from ? 1 : 0 }, { transform: tf(fit.x, fit.y - sy, 1), opacity: 1 }], { duration: reduce ? 0 : 560, easing: "cubic-bezier(.22,.9,.24,1)" });
+        an.onfinish = () => { if (fOpen) window.__focusCover = true; moreHint(); };
       });
       try { history.pushState({ jtFocus: 1 }, ""); } catch (e) {}
       if (!hintShown) {
@@ -2775,16 +2791,17 @@ canvas:active{cursor:grabbing}
       if (o.instant || reduce) { done(); return; }
       requestAnimationFrame(() => {
         const to = deck.rect();
-        const an = fImg.animate([{ transform: fImg.style.transform, opacity: 1 }, to ? { transform: tf(to.x, to.y, to.w / fit.w), opacity: 0.9 } : { transform: tf(fit.x, fit.y + 40, 0.9), opacity: 0 }], { duration: 380, easing: "cubic-bezier(.4,0,.2,1)", fill: "forwards" });
+        const an = fImg.animate([{ transform: fImg.style.transform, opacity: 1 }, to ? { transform: tf(to.x, to.y, to.w / fit.w), opacity: 0.9 } : { transform: tf(fit.x, fit.y - sy + 40, 0.9), opacity: 0 }], { duration: 380, easing: "cubic-bezier(.4,0,.2,1)", fill: "forwards" });
         an.onfinish = done;
       });
     }
     window.addEventListener("popstate", () => { if (fOpen) closeF({ fromPop: true }); });
     document.addEventListener("fullscreenchange", () => { if (!document.fullscreenElement && fsByUs) { fsByUs = false; if (fOpen) closeF({}); } });
-    window.addEventListener("resize", () => { if (fOpen && dk) { fit = layout(curD()); fImg.style.width = fit.w + "px"; fImg.style.height = fit.h + "px"; zm.k = 1; zm.x = 0; zm.y = 0; applyZ(); } });
+    window.addEventListener("resize", () => { if (fOpen && dk) { fit = layout(curD()); sy = Math.min(sy, fit.scroll); fImg.style.width = fit.w + "px"; fImg.style.height = fit.h + "px"; zm.k = 1; zm.x = 0; zm.y = 0; applyZ(); moreHint(); } });
     window.addEventListener("keydown", e => {
       if (!fOpen) return;
-      if (e.key === "ArrowRight" || e.key === "e" || e.key === "E" || e.key === " " || e.key === "Enter") { nav(1); } else if (e.key === "ArrowLeft" || e.key === "q" || e.key === "Q") { nav(-1); } else if (e.key === "Escape") { closeF({}); } else return;
+      if ((e.key === "ArrowDown" || e.key === "ArrowUp") && fit && fit.scroll > 0) { scrollTo(sy + (e.key === "ArrowDown" ? 1 : -1) * fit.av * 0.5, true); }
+      else if (e.key === "ArrowRight" || e.key === "e" || e.key === "E" || e.key === " " || e.key === "Enter") { nav(1); } else if (e.key === "ArrowLeft" || e.key === "q" || e.key === "Q") { nav(-1); } else if (e.key === "Escape") { closeF({}); } else return;
       e.preventDefault(); e.stopImmediatePropagation();
     }, true);
     // en el celular: al entrar a leer un mundo, esperar a que la diapositiva se arme en 3D y entonces acercarla
@@ -2810,7 +2827,7 @@ canvas:active{cursor:grabbing}
       if (pts.size === 2) {
         const [a, b] = [...pts.values()], m = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
         gs = { pinch: true, d0: Math.hypot(a.x - b.x, a.y - b.y) || 1, k0: zm.k, u: { x: (m.x - fit.x - zm.x) / zm.k, y: (m.y - fit.y - zm.y) / zm.k } };
-      } else if (pts.size === 1) gs = { x: e.clientX, y: e.clientY, t: e.timeStamp, zx: zm.x, zy: zm.y, moved: false, pinched: false };
+      } else if (pts.size === 1) gs = { x: e.clientX, y: e.clientY, t: e.timeStamp, zx: zm.x, zy: zm.y, sy0: sy, moved: false, pinched: false };
     });
     F.addEventListener("pointermove", e => {
       if (!pts.has(e.pointerId) || !gs) return;
@@ -2825,9 +2842,10 @@ canvas:active{cursor:grabbing}
       if (Math.hypot(dx, dy) > 8) gs.moved = true;
       if (!gs.moved || !fEnd.hidden) return;
       if (zm.k > 1.02) { zm.x = gs.zx + dx; zm.y = gs.zy + dy; clampZ(); applyZ(); return; }
-      if (!gs.axis) gs.axis = Math.abs(dy) > Math.abs(dx) ? "y" : "x";
+      if (!gs.axis) { gs.axis = Math.abs(dy) > Math.abs(dx) ? "y" : "x"; gs.scrolling = gs.axis === "y" && fit.scroll > 0 && !(gs.sy0 <= 1 && dy > 0); }
+      if (gs.scrolling) { sy = Math.max(0, Math.min(fit.scroll, gs.sy0 - dy)); applyZ(); moreHint(); return; }
       if (gs.axis === "y" && dy > 0) { const k = Math.max(0.82, 1 - dy / 1600); fImg.style.transform = tf(fit.x + fit.w * (1 - k) / 2, fit.y + dy * 0.9, k); fBg.style.opacity = String(Math.max(0.35, 1 - dy / 420)); }
-      else if (gs.axis === "x") fImg.style.transform = tf(fit.x + dx * 0.55, fit.y, 1);
+      else if (gs.axis === "x") fImg.style.transform = tf(fit.x + dx * 0.55, fit.y - sy, 1);
     });
     const endG = e => {
       if (!pts.has(e.pointerId)) return;
@@ -2842,12 +2860,13 @@ canvas:active{cursor:grabbing}
         if (zm.k > 1.02) { resetZ(true); return; }
         nav(e.clientX < window.innerWidth * 0.33 ? -1 : 1); return;
       }
-      if (zm.k > 1.02 || !fEnd.hidden) return;
+      if (zm.k > 1.02 || !fEnd.hidden || cur.scrolling) return;
       if (cur.axis === "y" && dy > 90) { closeF({}); return; }
       if (cur.axis === "x" && Math.abs(dx) > 50) { nav(dx < 0 ? 1 : -1); return; }
-      fImg.animate([{ transform: fImg.style.transform }, { transform: tf(fit.x, fit.y, 1) }], { duration: 200, easing: "ease-out" }); applyZ();
+      fImg.animate([{ transform: fImg.style.transform }, { transform: tf(fit.x, fit.y - sy, 1) }], { duration: 200, easing: "ease-out" }); applyZ();
     };
     F.addEventListener("pointerup", endG); F.addEventListener("pointercancel", endG);
+    F.addEventListener("wheel", e => { if (!fOpen || !fit) return; e.preventDefault(); if (zm.k > 1.02 || !fEnd.hidden) return; if (fit.scroll > 0) scrollTo(sy + e.deltaY, false); }, { passive: false });
     const api = {
       wantFs, isOpen: () => fOpen,
       openWorld: () => { const W = deckW(); if (W) openF(worldDeck(W)); },
