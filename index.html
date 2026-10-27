@@ -181,7 +181,34 @@ canvas:active{cursor:grabbing}
   .navbar button{min-height:46px}
   #stage.reading #mundos{display:none}
   .toast{top:auto!important;bottom:calc(96px + env(safe-area-inset-bottom,0px))!important}
+  .navbar{display:none!important}
 }
+/* ---------- Celular: la presentación a pantalla completa ---------- */
+#focus{position:fixed;inset:0;z-index:200;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent;--fc:#F2F4F7;--fcm:rgba(242,244,247,.3)}
+#focus[hidden]{display:none}
+#focus.light{--fc:#17141A;--fcm:rgba(23,20,26,.2)}
+#focus .fbg{position:absolute;inset:0;opacity:0;transition:opacity .4s ease,background-color .35s ease}
+#focus.on .fbg{opacity:1}
+#focus .fimg{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;will-change:transform;pointer-events:none;-webkit-user-drag:none;border-radius:2px}
+#focus .ftop{position:absolute;left:0;right:0;top:0;padding:calc(12px + env(safe-area-inset-top,0px)) calc(60px + env(safe-area-inset-right,0px)) 0 calc(14px + env(safe-area-inset-left,0px));opacity:0;transition:opacity .3s ease .2s;pointer-events:none}
+#focus .fbar{display:flex;gap:3px}
+#focus .fbar i{flex:1;height:3px;border-radius:2px;background:var(--fcm);transition:background-color .25s}
+#focus .fbar i.on{background:var(--fc)}
+#focus .fmeta{margin-top:9px;font:500 11px/1.25 var(--mono);letter-spacing:.06em;color:var(--fc);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#focus .fmeta b{font-weight:500;opacity:.6;margin-right:8px}
+#focus .fx{position:absolute;top:calc(2px + env(safe-area-inset-top,0px));right:calc(6px + env(safe-area-inset-right,0px));width:48px;height:48px;border:0;border-radius:50%;background:transparent;color:var(--fc);font:300 22px/1 var(--body);opacity:0;transition:opacity .3s ease .2s;cursor:pointer}
+#focus.on .ftop,#focus.on .fx{opacity:1}
+#focus .fend{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:32px 28px;text-align:center;color:var(--fc);opacity:0;transition:opacity .3s}
+#focus .fend.show{opacity:1}
+#focus .fend[hidden]{display:none}
+#focus .fendk{margin:0;font:500 11px var(--mono);letter-spacing:.24em;text-transform:uppercase;opacity:.65}
+#focus .fendt{margin:0 0 14px;font:800 32px/1.05 var(--display);font-stretch:120%}
+#focus .fgo{min-height:56px;padding:0 26px;border:0;border-radius:999px;font:700 16px var(--body);cursor:pointer;max-width:100%}
+#focus .fagain{min-height:46px;padding:0 20px;border:1px solid var(--fcm);border-radius:999px;background:transparent;color:var(--fc);font:500 14px var(--body);cursor:pointer}
+#focus .fhint{position:absolute;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);padding:10px 16px;border-radius:999px;background:rgba(10,12,16,.82);color:#F2F4F7;font:500 13px var(--body);white-space:nowrap;opacity:0;transition:opacity .4s;pointer-events:none}
+#focus .fhint.show{opacity:1}
+#focus .fhint[hidden]{display:none}
+@media (prefers-reduced-motion: reduce){#focus .fbg,#focus .ftop,#focus .fx,#focus .fend{transition:none}}
 </style>
 </head>
 <body>
@@ -266,7 +293,7 @@ canvas:active{cursor:grabbing}
   let langSaved = false;
   try { const hm = (location.hash || "").match(/^#(en|es)\b/); if (hm) { LANG = hm[1]; langSaved = true; } else { const sv = localStorage.getItem("jt-lang"); if (sv === "en" || sv === "es") { LANG = sv; langSaved = true; } } } catch (e) {}
   document.documentElement.lang = LANG;
-  const I18N = {"Teclado listo": "Keyboard ready", "Haz clic para usar el teclado": "Click to use the keyboard", "Contacto": "Contact", "Sobre mí": "About", "Trabajo": "Work", "DISEÑO DE MARCA × DESARROLLO WEB": "BRAND DESIGN × WEB DEVELOPMENT", "Diseño identidades y las convierto en webs que funcionan, para startups y empresas tech.": "I design identities and turn them into websites that work, for startups and tech companies.", "Ver proyectos": "See projects", "Hablemos": "Let's talk", "Hablemos estará al final del recorrido, después de tu historia.": "Let's talk is waiting at the end of the tour, after my story.", "Marca × Web      ES / EN      Disponible para proyectos": "Brand × Web      ES / EN      Available for projects", "↺ Ver la entrada otra vez": "↺ Watch the intro again", "ACABADO": "FINISH", "Aluminio + vidrio": "Aluminium + glass", "Grafito + luz": "Graphite + light", "Cerámica": "Ceramic", "aluminio + vidrio": "aluminium + glass", "grafito + luz": "graphite + light", "cerámica": "ceramic", "Estación JT": "JT Station", "De vuelta en la estación.": "Back at the station.", "Fútbol de noche, bajo reflectores.": "Football at night, under the floodlights.", "Frío que enciende.": "Cold that ignites.", "Mundo 01 · FutPlay. Activa la palanca para empezar: camina hasta ella o pulsa E.": "World 01 · FutPlay. Pull the lever to start: walk up to it or press E.", "Mundo 02 · Paws of Malta. Activa la palanca para empezar.": "World 02 · Paws of Malta. Pull the lever to start.", "Mundo 03 · Frank's Hotdogs. Activa la palanca para empezar.": "World 03 · Frank's Hotdogs. Pull the lever to start.", "Mundo 04 · Boom ICE. Activa la palanca para empezar.": "World 04 · Boom ICE. Pull the lever to start.", "SIGUIENTE": "NEXT", "Mi historia": "My story", "Se desbloqueó Mi historia.": "My story is unlocked.", "Recorriste los cuatro mundos. Pulsa E otra vez para ir a Mi historia.": "You've visited all four worlds. Press E again to go to My story.", "Fin del recorrido. Pulsa E otra vez para volver a empezar en FutPlay.": "End of the tour. Press E again to start over at FutPlay.", "Siguiente": "Next", "Ir a Mi historia": "Go to My story", "Volver a empezar": "Start over", "← ESTACIÓN": "← STATION", "Volver al inicio": "Back to the start", "ACTIVA LA PRESENTACIÓN": "START THE PRESENTATION", "Empuja la palanca o pulsa E": "Push the lever or press E", "La presentación vuelve a empezar.": "The presentation starts over.", "Mi historia se desbloquea al terminar los cuatro mundos.": "My story unlocks once you finish the four worlds.", "Pellizca para acercar y arrastra para moverte por la pantalla.": "Pinch to zoom and drag to move around the screen.", "De vuelta en Mi historia.": "Back in My story.", "Pisa «Ver proyectos» o pulsa E para viajar a los mundos.": "Step on “See projects” or press E to travel to the worlds.", "Aquí termina la plaza. Pisa «Ver proyectos» para viajar a los mundos.": "The plaza ends here. Step on “See projects” to travel to the worlds.", "Aquí termina la plaza. Busca el portal para seguir.": "The plaza ends here. Find the portal to continue.", "Saltar entrada ⏭": "Skip intro ⏭", "Menú": "Menu", "Toca el botón de abajo": "Tap the button below", "Encender la presentación ▶": "Start the presentation ▶", "Ver la presentación ▶": "See the presentation ▶", "Hablemos →": "Let's talk →", "Ver todas las pantallas": "See every screen", "Ver solo lo esencial": "Highlights only", "Recorrido del proyecto": "Project tour", "Anterior": "Previous", "avanzar": "forward", "retroceder": "back", "girar": "turn", "correr": "run", "Espacio": "Space", "saltar": "jump", "saludar": "wave", "siguiente ·": "next ·", "anterior": "previous", "pisa un portal para viajar": "step on a portal to travel", "arrastra para mirar · rueda para alejar": "drag to look · scroll to zoom", "Controles táctiles": "Touch controls", "Avanzar": "Forward", "Girar a la izquierda": "Turn left", "Retroceder": "Back", "Girar a la derecha": "Turn right", "Saltar": "Jump", "Saludar": "Wave", "Universo JT: la portada de Johan Torres. Marcas atrevidas, construidas con ingeniería.": "Universo JT: Johan Torres's homepage. Brands that dare, built with engineering.", "La portada de Johan Torres cae en 3D y se convierte en el piso de un universo. El monograma JT se levanta como monumento y de su cubo aguamarina nace Cubo, el personaje que recorre el portafolio. Al pisar Ver proyectos, un agujero de gusano lo lleva a la galaxia de cada proyecto: FutPlay, Paws of Malta, Frank's Hotdogs y Boom ICE.": "Johan Torres's homepage falls in 3D and becomes the floor of a universe. The JT monogram rises like a monument and out of its aqua cube comes Cubo, the character who walks through the portfolio. Stepping on See projects, a wormhole takes him to each project's galaxy: FutPlay, Paws of Malta, Frank's Hotdogs and Boom ICE.", "Este navegador no puede mostrar 3D. Johan Torres · Marcas atrevidas, construidas con ingeniería.": "This browser can't display 3D. Johan Torres · Brands that dare, built with engineering.", "Idioma · Language": "Language · Idioma", "Español": "Spanish", "Mi historia aparece al terminar los cuatro mundos.": "My story appears once you finish the four worlds.", "radio apagada": "radio off", "en el aire": "on air", "Radio encendida: dale play a la lista.": "Radio on: hit play on the playlist.", "Radio apagada.": "Radio off.", "Playlist en Spotify": "Playlist on Spotify", "Apagar la radio": "Turn off the radio", "Abrir en Spotify ↗": "Open in Spotify ↗", "Playlist de Spotify": "Spotify playlist", "radio": "radio", "Pop punk + alt rock · 16 canciones": "Pop punk + alt rock · 16 songs", "▶ Escuchar en Spotify ↗": "▶ Listen on Spotify ↗", "La lista suena en Spotify mientras recorres el universo.": "The playlist plays on Spotify while you explore the universe.", "Radio encendida: la lista se abrió en Spotify.": "Radio on: the playlist opened in Spotify.", "Radio encendida.": "Radio on.", "Radio encendida: toca «Escuchar en Spotify».": "Radio on: tap “Listen on Spotify”.", "Radio apagada. La música se pausa desde Spotify.": "Radio off. Pause the music from Spotify.", "Cámara": "Camera", "Seguir": "Follow", "Aérea": "Aerial", "Dron": "Drone", "1ª persona": "1st person", "Seguir · V": "Follow · V", "Aérea · V": "Aerial · V", "Dron · V": "Drone · V", "1ª persona · V": "1st person · V", "Cámara: Seguir": "Camera: Follow", "Cámara: Aérea": "Camera: Aerial", "Cámara: Dron": "Camera: Drone", "Cámara: 1ª persona": "Camera: 1st person", "cámara": "camera", "doble clic: caminar ahí": "double-click: walk there", "Mi historia termina aquí. Una grúa va a ordenar toda la página…": "My story ends here. A crane is about to put the whole page in order…", "Así se ve la página completa: inicio, mundos, historia y Hablemos. Camina para seguir o pulsa E para volver a empezar.": "This is the whole page: home, worlds, story and Let's talk. Walk to keep exploring or press E to start over.", "Hablemos: escríbeme por WhatsApp, LinkedIn, Instagram o correo.": "Let's talk: message me on WhatsApp, LinkedIn, Instagram or email.", "Mi historia, en la página completa.": "My story, on the full page.", "Mi historia termina aquí. Una grúa va a ordenar toda la página y a completar el logo…": "My story ends here. A crane is about to put the whole page in order and complete the logo…", "Escribirme por WhatsApp ↗": "Message me on WhatsApp ↗", "Ver mi LinkedIn ↗": "See my LinkedIn ↗", "Ver mi Instagram ↗": "See my Instagram ↗", "Enviarme un correo ↗": "Send me an email ↗", "Correo": "Email", "o pulsa E": "or press E", "Así se ve la página completa. En Hablemos, pisa o toca WhatsApp, LinkedIn, Instagram o Correo para escribirme.": "This is the whole page. In Let's talk, step on or tap WhatsApp, LinkedIn, Instagram or Email to reach me.", "Escribirme ↗": "Message me ↗", "Radio encendida: tu playlist suena aquí mismo.": "Radio on: your playlist plays right here.", "Versión 2D ↗": "2D version ↗", "Ver el portafolio en 2D": "See the portfolio in 2D", "Así solo suenan adelantos de 30 s.": "This way you only get 30-second previews.", "Las canciones completas suenan con tu cuenta de Spotify.": "Full songs play with your Spotify account.", "▶ Escuchar completa en Spotify ↗": "▶ Listen in full on Spotify ↗", "Iniciar sesión en Spotify ↗": "Log in to Spotify ↗", "Seguir con adelantos": "Keep the previews", "Suena completa en la app de Spotify; el universo te espera aquí.": "It plays in full in the Spotify app; the universe waits for you here.", "Sin sesión de Spotify solo suenan adelantos: ábrela completa en Spotify.": "Without a Spotify login you only get previews: open it in full on Spotify.", "Radio encendida: toca «Escuchar completa en Spotify».": "Radio on: tap “Listen in full on Spotify”.", "Salir de la pantalla": "Leave the screen", "Mundos": "Worlds", "Mundos recorridos": "Worlds visited", "Pisa un proyecto para entrar": "Step on a project to enter", "Ver en 2D ↗": "See it in 2D ↗", "Cerrar": "Close", "Ya recorriste los cuatro mundos. Hablemos está al final de la página.": "You've visited all four worlds. Let's talk is at the end of the page.", "Armando la página…": "Building the page…", "Una grúa arma la página completa. Toca la pantalla para acelerar.": "A crane is building the whole page. Tap the screen to speed it up.", "Una grúa arma la página completa. Pulsa cualquier tecla para acelerar.": "A crane is building the whole page. Press any key to speed it up.", "El logo, completo. Ahora los proyectos y mi historia…": "The logo is complete. Now the projects and my story…", "Hablemos: aquí me escribes por WhatsApp, LinkedIn, Instagram o correo.": "Let's talk: write to me here on WhatsApp, LinkedIn, Instagram or email.", "Acelerando…": "Speeding up…", "Mundos 4/4: los recorriste todos. Al terminar este te llevo a Hablemos.": "Worlds 4/4: you've seen them all. When you finish this one, I'll take you to Let's talk.", "Recorriste los cuatro mundos. Pulsa E otra vez para ir a Hablemos.": "You've visited all four worlds. Press E again to go to Let's talk.", "Recorriste los cuatro mundos. Aquí está Hablemos: pisa WhatsApp, LinkedIn, Instagram o Correo para escribirme.": "You've visited all four worlds. Here's Let's talk: step on WhatsApp, LinkedIn, Instagram or Email to write to me.", "Ir a Hablemos": "Go to Let's talk", "EMPIEZA AQUÍ": "START HERE", "SIGUE AQUÍ": "NEXT UP", "✓ VISTO": "✓ SEEN", "La portada de Johan Torres cae en 3D y se convierte en el piso de un universo. El monograma JT se levanta como monumento y de su cubo aguamarina nace Cubo, el personaje que recorre el portafolio. Luego una grúa arma la página completa: los proyectos, mi historia y Hablemos. Al pisar un proyecto, un agujero de gusano lleva a Cubo a la galaxia de ese proyecto: FutPlay, Paws of Malta, Frank's Hotdogs o Boom ICE.": "Johan Torres's homepage falls in 3D and becomes the floor of a universe. The JT monogram rises like a monument, and from its aqua cube Cubo is born, the character who walks through the portfolio. Then a crane builds the whole page: the projects, my story and Let's talk. Stepping on a project, a wormhole takes Cubo to that project's galaxy: FutPlay, Paws of Malta, Frank's Hotdogs or Boom ICE."};
+  const I18N = {"Teclado listo": "Keyboard ready", "Haz clic para usar el teclado": "Click to use the keyboard", "Contacto": "Contact", "Sobre mí": "About", "Trabajo": "Work", "DISEÑO DE MARCA × DESARROLLO WEB": "BRAND DESIGN × WEB DEVELOPMENT", "Diseño identidades y las convierto en webs que funcionan, para startups y empresas tech.": "I design identities and turn them into websites that work, for startups and tech companies.", "Ver proyectos": "See projects", "Hablemos": "Let's talk", "Hablemos estará al final del recorrido, después de tu historia.": "Let's talk is waiting at the end of the tour, after my story.", "Marca × Web      ES / EN      Disponible para proyectos": "Brand × Web      ES / EN      Available for projects", "↺ Ver la entrada otra vez": "↺ Watch the intro again", "ACABADO": "FINISH", "Aluminio + vidrio": "Aluminium + glass", "Grafito + luz": "Graphite + light", "Cerámica": "Ceramic", "aluminio + vidrio": "aluminium + glass", "grafito + luz": "graphite + light", "cerámica": "ceramic", "Estación JT": "JT Station", "De vuelta en la estación.": "Back at the station.", "Fútbol de noche, bajo reflectores.": "Football at night, under the floodlights.", "Frío que enciende.": "Cold that ignites.", "Mundo 01 · FutPlay. Activa la palanca para empezar: camina hasta ella o pulsa E.": "World 01 · FutPlay. Pull the lever to start: walk up to it or press E.", "Mundo 02 · Paws of Malta. Activa la palanca para empezar.": "World 02 · Paws of Malta. Pull the lever to start.", "Mundo 03 · Frank's Hotdogs. Activa la palanca para empezar.": "World 03 · Frank's Hotdogs. Pull the lever to start.", "Mundo 04 · Boom ICE. Activa la palanca para empezar.": "World 04 · Boom ICE. Pull the lever to start.", "SIGUIENTE": "NEXT", "Mi historia": "My story", "Se desbloqueó Mi historia.": "My story is unlocked.", "Recorriste los cuatro mundos. Pulsa E otra vez para ir a Mi historia.": "You've visited all four worlds. Press E again to go to My story.", "Fin del recorrido. Pulsa E otra vez para volver a empezar en FutPlay.": "End of the tour. Press E again to start over at FutPlay.", "Siguiente": "Next", "Ir a Mi historia": "Go to My story", "Volver a empezar": "Start over", "← ESTACIÓN": "← STATION", "Volver al inicio": "Back to the start", "ACTIVA LA PRESENTACIÓN": "START THE PRESENTATION", "Empuja la palanca o pulsa E": "Push the lever or press E", "La presentación vuelve a empezar.": "The presentation starts over.", "Mi historia se desbloquea al terminar los cuatro mundos.": "My story unlocks once you finish the four worlds.", "Pellizca para acercar y arrastra para moverte por la pantalla.": "Pinch to zoom and drag to move around the screen.", "De vuelta en Mi historia.": "Back in My story.", "Pisa «Ver proyectos» o pulsa E para viajar a los mundos.": "Step on “See projects” or press E to travel to the worlds.", "Aquí termina la plaza. Pisa «Ver proyectos» para viajar a los mundos.": "The plaza ends here. Step on “See projects” to travel to the worlds.", "Aquí termina la plaza. Busca el portal para seguir.": "The plaza ends here. Find the portal to continue.", "Saltar entrada ⏭": "Skip intro ⏭", "Menú": "Menu", "Toca el botón de abajo": "Tap the button below", "Encender la presentación ▶": "Start the presentation ▶", "Ver la presentación ▶": "See the presentation ▶", "Hablemos →": "Let's talk →", "Ver desde el inicio": "Watch from the start", "Ir a Hablemos →": "Go to Let's talk →", "Volver a la estación →": "Back to the station →", "Cerrar la presentación": "Close the presentation", "Toca a la derecha para avanzar · desliza hacia abajo para salir": "Tap the right side to advance · swipe down to exit", "Fin del recorrido": "End of the tour", "Ver todas las pantallas": "See every screen", "Ver solo lo esencial": "Highlights only", "Recorrido del proyecto": "Project tour", "Anterior": "Previous", "avanzar": "forward", "retroceder": "back", "girar": "turn", "correr": "run", "Espacio": "Space", "saltar": "jump", "saludar": "wave", "siguiente ·": "next ·", "anterior": "previous", "pisa un portal para viajar": "step on a portal to travel", "arrastra para mirar · rueda para alejar": "drag to look · scroll to zoom", "Controles táctiles": "Touch controls", "Avanzar": "Forward", "Girar a la izquierda": "Turn left", "Retroceder": "Back", "Girar a la derecha": "Turn right", "Saltar": "Jump", "Saludar": "Wave", "Universo JT: la portada de Johan Torres. Marcas atrevidas, construidas con ingeniería.": "Universo JT: Johan Torres's homepage. Brands that dare, built with engineering.", "La portada de Johan Torres cae en 3D y se convierte en el piso de un universo. El monograma JT se levanta como monumento y de su cubo aguamarina nace Cubo, el personaje que recorre el portafolio. Al pisar Ver proyectos, un agujero de gusano lo lleva a la galaxia de cada proyecto: FutPlay, Paws of Malta, Frank's Hotdogs y Boom ICE.": "Johan Torres's homepage falls in 3D and becomes the floor of a universe. The JT monogram rises like a monument and out of its aqua cube comes Cubo, the character who walks through the portfolio. Stepping on See projects, a wormhole takes him to each project's galaxy: FutPlay, Paws of Malta, Frank's Hotdogs and Boom ICE.", "Este navegador no puede mostrar 3D. Johan Torres · Marcas atrevidas, construidas con ingeniería.": "This browser can't display 3D. Johan Torres · Brands that dare, built with engineering.", "Idioma · Language": "Language · Idioma", "Español": "Spanish", "Mi historia aparece al terminar los cuatro mundos.": "My story appears once you finish the four worlds.", "radio apagada": "radio off", "en el aire": "on air", "Radio encendida: dale play a la lista.": "Radio on: hit play on the playlist.", "Radio apagada.": "Radio off.", "Playlist en Spotify": "Playlist on Spotify", "Apagar la radio": "Turn off the radio", "Abrir en Spotify ↗": "Open in Spotify ↗", "Playlist de Spotify": "Spotify playlist", "radio": "radio", "Pop punk + alt rock · 16 canciones": "Pop punk + alt rock · 16 songs", "▶ Escuchar en Spotify ↗": "▶ Listen on Spotify ↗", "La lista suena en Spotify mientras recorres el universo.": "The playlist plays on Spotify while you explore the universe.", "Radio encendida: la lista se abrió en Spotify.": "Radio on: the playlist opened in Spotify.", "Radio encendida.": "Radio on.", "Radio encendida: toca «Escuchar en Spotify».": "Radio on: tap “Listen on Spotify”.", "Radio apagada. La música se pausa desde Spotify.": "Radio off. Pause the music from Spotify.", "Cámara": "Camera", "Seguir": "Follow", "Aérea": "Aerial", "Dron": "Drone", "1ª persona": "1st person", "Seguir · V": "Follow · V", "Aérea · V": "Aerial · V", "Dron · V": "Drone · V", "1ª persona · V": "1st person · V", "Cámara: Seguir": "Camera: Follow", "Cámara: Aérea": "Camera: Aerial", "Cámara: Dron": "Camera: Drone", "Cámara: 1ª persona": "Camera: 1st person", "cámara": "camera", "doble clic: caminar ahí": "double-click: walk there", "Mi historia termina aquí. Una grúa va a ordenar toda la página…": "My story ends here. A crane is about to put the whole page in order…", "Así se ve la página completa: inicio, mundos, historia y Hablemos. Camina para seguir o pulsa E para volver a empezar.": "This is the whole page: home, worlds, story and Let's talk. Walk to keep exploring or press E to start over.", "Hablemos: escríbeme por WhatsApp, LinkedIn, Instagram o correo.": "Let's talk: message me on WhatsApp, LinkedIn, Instagram or email.", "Mi historia, en la página completa.": "My story, on the full page.", "Mi historia termina aquí. Una grúa va a ordenar toda la página y a completar el logo…": "My story ends here. A crane is about to put the whole page in order and complete the logo…", "Escribirme por WhatsApp ↗": "Message me on WhatsApp ↗", "Ver mi LinkedIn ↗": "See my LinkedIn ↗", "Ver mi Instagram ↗": "See my Instagram ↗", "Enviarme un correo ↗": "Send me an email ↗", "Correo": "Email", "o pulsa E": "or press E", "Así se ve la página completa. En Hablemos, pisa o toca WhatsApp, LinkedIn, Instagram o Correo para escribirme.": "This is the whole page. In Let's talk, step on or tap WhatsApp, LinkedIn, Instagram or Email to reach me.", "Escribirme ↗": "Message me ↗", "Radio encendida: tu playlist suena aquí mismo.": "Radio on: your playlist plays right here.", "Versión 2D ↗": "2D version ↗", "Ver el portafolio en 2D": "See the portfolio in 2D", "Así solo suenan adelantos de 30 s.": "This way you only get 30-second previews.", "Las canciones completas suenan con tu cuenta de Spotify.": "Full songs play with your Spotify account.", "▶ Escuchar completa en Spotify ↗": "▶ Listen in full on Spotify ↗", "Iniciar sesión en Spotify ↗": "Log in to Spotify ↗", "Seguir con adelantos": "Keep the previews", "Suena completa en la app de Spotify; el universo te espera aquí.": "It plays in full in the Spotify app; the universe waits for you here.", "Sin sesión de Spotify solo suenan adelantos: ábrela completa en Spotify.": "Without a Spotify login you only get previews: open it in full on Spotify.", "Radio encendida: toca «Escuchar completa en Spotify».": "Radio on: tap “Listen in full on Spotify”.", "Salir de la pantalla": "Leave the screen", "Mundos": "Worlds", "Mundos recorridos": "Worlds visited", "Pisa un proyecto para entrar": "Step on a project to enter", "Ver en 2D ↗": "See it in 2D ↗", "Cerrar": "Close", "Ya recorriste los cuatro mundos. Hablemos está al final de la página.": "You've visited all four worlds. Let's talk is at the end of the page.", "Armando la página…": "Building the page…", "Una grúa arma la página completa. Toca la pantalla para acelerar.": "A crane is building the whole page. Tap the screen to speed it up.", "Una grúa arma la página completa. Pulsa cualquier tecla para acelerar.": "A crane is building the whole page. Press any key to speed it up.", "El logo, completo. Ahora los proyectos y mi historia…": "The logo is complete. Now the projects and my story…", "Hablemos: aquí me escribes por WhatsApp, LinkedIn, Instagram o correo.": "Let's talk: write to me here on WhatsApp, LinkedIn, Instagram or email.", "Acelerando…": "Speeding up…", "Mundos 4/4: los recorriste todos. Al terminar este te llevo a Hablemos.": "Worlds 4/4: you've seen them all. When you finish this one, I'll take you to Let's talk.", "Recorriste los cuatro mundos. Pulsa E otra vez para ir a Hablemos.": "You've visited all four worlds. Press E again to go to Let's talk.", "Recorriste los cuatro mundos. Aquí está Hablemos: pisa WhatsApp, LinkedIn, Instagram o Correo para escribirme.": "You've visited all four worlds. Here's Let's talk: step on WhatsApp, LinkedIn, Instagram or Email to write to me.", "Ir a Hablemos": "Go to Let's talk", "EMPIEZA AQUÍ": "START HERE", "SIGUE AQUÍ": "NEXT UP", "✓ VISTO": "✓ SEEN", "La portada de Johan Torres cae en 3D y se convierte en el piso de un universo. El monograma JT se levanta como monumento y de su cubo aguamarina nace Cubo, el personaje que recorre el portafolio. Luego una grúa arma la página completa: los proyectos, mi historia y Hablemos. Al pisar un proyecto, un agujero de gusano lleva a Cubo a la galaxia de ese proyecto: FutPlay, Paws of Malta, Frank's Hotdogs o Boom ICE.": "Johan Torres's homepage falls in 3D and becomes the floor of a universe. The JT monogram rises like a monument, and from its aqua cube Cubo is born, the character who walks through the portfolio. Then a crane builds the whole page: the projects, my story and Let's talk. Stepping on a project, a wormhole takes Cubo to that project's galaxy: FutPlay, Paws of Malta, Frank's Hotdogs or Boom ICE."};
   const I18N_RX = [
     [/^Fin de (.+)\. Pulsa E otra vez para viajar a (.+)\.$/, m => "End of " + tx(m[1]) + ". Press E again to travel to " + tx(m[2]) + "."],
     [/^Estás en el inicio de (.+)\.$/, m => "You're at the start of " + tx(m[1]) + "."],
@@ -274,6 +301,7 @@ canvas:active{cursor:grabbing}
     [/^Llegando a (.+)$/, m => "Arriving at " + tx(m[1])],
     [/^Viajar a (.+)$/, m => "Travel to " + tx(m[1])],
     [/^Entrar a (.+) →$/, m => "Enter " + tx(m[1]) + " →"],
+    [/^Siguiente: (.+) →$/, m => "Next: " + tx(m[1]) + " →"],
     [/^Entrando a (.+)…$/, m => "Entering " + tx(m[1]) + "…"],
     [/^Acabado: (.+)$/, m => "Finish: " + tx(m[1])],
     [/^Mundo (\d\d) · (.+)$/, m => "World " + m[1] + " · " + m[2]],
@@ -1616,6 +1644,7 @@ canvas:active{cursor:grabbing}
     if (on) { const W = deckW(); if (!W || !W.on || travel) return; }
     if (on && !reading) { readZoom = 1; readPan.set(0, 0); if (!pinchTold && window.matchMedia("(pointer:coarse)").matches) { pinchTold = true; setTimeout(() => toast("Pellizca para acercar y arrastra para moverte por la pantalla."), 900); } }
     reading = on; document.getElementById("cams").style.visibility = on ? "hidden" : ""; stage.classList.toggle("reading", on);
+    if (window.__onReading) window.__onReading(on);
   }
   function enterWorld(id) {
     world = id; const W = WORLDS[id], now = clock.getElapsedTime();
@@ -2530,7 +2559,7 @@ canvas:active{cursor:grabbing}
     accent.emissiveIntensity = 0.8 + Math.max(0, glowBoost) * 1.2 + flash * 2;
     glass.emissiveIntensity = 0.2 + Math.max(0, glowBoost) * 0.2 + flash * 0.45;
     rim.intensity = (1.9 + glowBoost * 1.1 + flash * 2) * clamp01((t - T.pop) / 1.5);
-    if (tm === "tunnel") renderer.render(tunnelScene, tunnelCam); else renderer.render(scene, camera);
+    if (window.__focusCover) {} else if (tm === "tunnel") renderer.render(tunnelScene, tunnelCam); else renderer.render(scene, camera);
   }
 
   // Las fuentes deben estar listas antes de pintar los textos de la portada
@@ -2574,20 +2603,213 @@ canvas:active{cursor:grabbing}
         return { t: "Hablemos →", f: () => goHist(true) };
       }
       const W = WORLDS[world]; if (!W || !W.scr) return null;
-      if (!W.on) return { t: "Encender la presentación ▶", f: () => activate(W) };
-      return { t: "Ver la presentación ▶", f: () => setReading(true) };
+      if (!W.on) return { t: "Ver la presentación ▶", f: () => { wantFs(); activate(W); } };
+      return { t: "Ver la presentación ▶", f: () => { wantFs(); setReading(true); } };
     };
     cta.addEventListener("click", e => { e.stopPropagation(); if (ctaAct) ctaAct(); });
     setInterval(() => { const st = ctaState(); cta.hidden = !st || !sheet.hidden; if (st) { const t = tx(st.t); if (cta.textContent !== t) cta.textContent = t; ctaAct = st.f; } }, 200);
-    // deslizar a los lados para pasar de pantalla
-    let sw = null;
-    canvas.addEventListener("pointerdown", e => { sw = reading && readZoom > 0.98 ? { x: e.clientX, y: e.clientY, t: e.timeStamp } : null; });
-    canvas.addEventListener("pointerup", e => {
-      if (!sw || !reading) { sw = null; return; }
-      const dx = e.clientX - sw.x, dy = e.clientY - sw.y;
-      if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4 && e.timeStamp - sw.t < 800) { const W = deckW(); if (W) goStep(W, dx < 0 ? 1 : -1); }
-      sw = null;
+    // ---------- La presentación a pantalla completa: se acerca, llena la pantalla y lo demás desaparece ----------
+    pinchTold = true;
+    const F = document.createElement("div"); F.id = "focus"; F.hidden = true;
+    F.setAttribute("role", "dialog"); F.setAttribute("aria-modal", "true");
+    F.innerHTML = '<div class="fbg"></div><img class="fimg" alt="" draggable="false"><div class="ftop"><div class="fbar"></div><div class="fmeta"><b></b><span></span></div></div>'
+      + '<button type="button" class="fx">✕</button><div class="fend" hidden><p class="fendk"></p><h2 class="fendt"></h2><button type="button" class="fgo"></button><button type="button" class="fagain"></button></div><div class="fhint" hidden></div>';
+    document.body.appendChild(F);
+    const fBg = F.querySelector(".fbg"), fImg = F.querySelector(".fimg"), fTop = F.querySelector(".ftop"), fBar = F.querySelector(".fbar"), fNum = F.querySelector(".fmeta b"), fLab = F.querySelector(".fmeta span");
+    const fX = F.querySelector(".fx"), fEnd = F.querySelector(".fend"), fGo = F.querySelector(".fgo"), fAgain = F.querySelector(".fagain"), fHint = F.querySelector(".fhint");
+    fX.setAttribute("aria-label", tx("Cerrar la presentación"));
+    let fOpen = false, fW = null, fit = null, fTok = 0, fsByUs = false, fWait = 0;
+    const zm = { k: 1, x: 0, y: 0 };
+    const pv = new THREE.Vector3();
+    const canFs = () => !!(document.documentElement.requestFullscreen) && !/iP(hone|ad|od)/.test(navigator.userAgent);
+    function wantFs() { if (!canFs() || document.fullscreenElement) return; try { document.documentElement.requestFullscreen({ navigationUI: "hide" }).then(() => { fsByUs = true; }).catch(() => {}); } catch (e) {} }
+    function leaveFs() { if (fsByUs && document.fullscreenElement) { try { document.exitFullscreen().catch(() => {}); } catch (e) {} } fsByUs = false; }
+    const curIdx = () => stepIndex(fW, fW.pos);
+    const curD = () => PASOS[fW.id][curIdx()];
+    const lum = hex => { const c = new THREE.Color(hex); return 0.2126 * c.r + 0.7152 * c.g + 0.0722 * c.b; };
+    function layout(d) {
+      const vw = window.innerWidth, vh = window.innerHeight, top = fTop.getBoundingClientRect().bottom + 10, bot = 14;
+      const sc = Math.min(vw / d.w, (vh - top - bot) / d.h), w = d.w * sc, h = d.h * sc;
+      return { x: (vw - w) / 2, y: top + Math.max(0, (vh - top - bot - h) / 2), w, h };
+    }
+    const tf = (x, y, k) => "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) scale(" + k.toFixed(4) + ")";
+    function applyZ() { fImg.style.transform = tf(fit.x + zm.x, fit.y + zm.y, zm.k); }
+    function clampZ() {
+      const vw = window.innerWidth, vh = window.innerHeight, w = fit.w * zm.k, h = fit.h * zm.k;
+      let px = fit.x + zm.x, py = fit.y + zm.y;
+      px = w > vw ? Math.min(0, Math.max(vw - w, px)) : (vw - w) / 2;
+      py = h > vh ? Math.min(0, Math.max(vh - h, py)) : Math.max(0, (vh - h) / 2);
+      zm.x = px - fit.x; zm.y = py - fit.y;
+    }
+    function resetZ(anim) { zm.k = 1; zm.x = 0; zm.y = 0; if (anim) fImg.animate([{ transform: fImg.style.transform }, { transform: tf(fit.x, fit.y, 1) }], { duration: 220, easing: "ease-out" }); applyZ(); }
+    // dónde está la pantalla 3D ahora mismo, en píxeles
+    function rect3d() {
+      const W = fW, S = W && W.scr; if (!S) return null;
+      const h = S.hCur || (curD().h * UPX); let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9;
+      [[-1, 0], [1, 0], [-1, 1], [1, 1]].forEach(([sx, sy]) => {
+        pv.set(S.dir * sx * SCR.w / 2, SCR.y0 + sy * h, S.z0).project(camera);
+        const x = (pv.x + 1) / 2 * window.innerWidth, y = (1 - pv.y) / 2 * window.innerHeight;
+        x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y);
+      });
+      return x1 - x0 > 20 ? { x: x0, y: y0, w: x1 - x0, h: y1 - y0 } : null;
+    }
+    function paintChrome(d) {
+      F.classList.toggle("light", lum(d.bg) > 0.55);
+      fBg.style.backgroundColor = d.bg;
+      const n = PASOS[fW.id].length, i = curIdx();
+      if (fBar.children.length !== n) fBar.innerHTML = "<i></i>".repeat(n);
+      [...fBar.children].forEach((el, k) => el.classList.toggle("on", k <= i));
+      fNum.textContent = String(i + 1).padStart(2, "0") + " / " + String(n).padStart(2, "0");
+      fLab.textContent = tx(fW.short) + " · " + tx(d.label);
+    }
+    function setSrc(d) {
+      fImg.src = d.f; fImg.style.width = fit.w + "px"; fImg.style.height = fit.h + "px";
+      const n = PASOS[fW.id][curIdx() + 1]; if (n) { const im = new Image(); im.src = n.f; }
+      return (fImg.decode ? fImg.decode() : Promise.resolve()).catch(() => {});
+    }
+    function showStepF(dir) {
+      const tok = ++fTok, d = curD();
+      paintChrome(d); zm.k = 1; zm.x = 0; zm.y = 0;
+      const out = fImg.animate([{ opacity: 1, transform: fImg.style.transform }, { opacity: 0, transform: tf(fit.x - dir * 36, fit.y, 1) }], { duration: reduce ? 0 : 140, easing: "ease-in", fill: "forwards" });
+      out.onfinish = () => {
+        if (tok !== fTok) return;
+        fit = layout(d);
+        setSrc(d).then(() => {
+          if (tok !== fTok) return;
+          out.cancel(); applyZ();
+          fImg.animate([{ opacity: 0, transform: tf(fit.x + dir * 36, fit.y, 1) }, { opacity: 1, transform: tf(fit.x, fit.y, 1) }], { duration: reduce ? 0 : 230, easing: "cubic-bezier(.2,.8,.2,1)" });
+        });
+      };
+    }
+    function nav(dir) {
+      if (!fOpen || !fW) return;
+      if (zm.k > 1.02) { resetZ(true); return; }
+      if (!fEnd.hidden) { if (dir < 0) hideEnd(); return; }
+      if (dir > 0) {
+        if (!nextPos(fW, fW.pos)) { showEnd(); return; }
+        goStep(fW, 1); showStepF(1);
+      } else {
+        if (!fW.hist.length) { fImg.animate([{ transform: tf(fit.x, fit.y, 1) }, { transform: tf(fit.x + 18, fit.y, 1) }, { transform: tf(fit.x, fit.y, 1) }], { duration: 260, easing: "ease-out" }); return; }
+        goStep(fW, -1); showStepF(-1);
+      }
+    }
+    function endTarget() { const due = talkDue(); return due ? { to: "station", hist: true, end: true } : fW.next; }
+    function showEnd() {
+      const tg = endTarget(), acc = "#" + new THREE.Color(fW.acc).getHexString();
+      fEnd.querySelector(".fendk").textContent = tx(fW.label);
+      fEnd.querySelector(".fendt").textContent = tx(fW.id === "historia" ? "Fin del recorrido" : fW.short);
+      fGo.textContent = tx(tg.hist ? "Ir a Hablemos →" : tg.to === "station" ? "Volver a la estación →" : "Siguiente: " + WORLDS[tg.to].short + " →");
+      fGo.style.background = acc; fGo.style.color = lum(acc) > 0.5 ? "#0B0D10" : "#FFFFFF";
+      fAgain.textContent = tx("Ver desde el inicio");
+      fEnd.style.background = curD().bg + "f2"; fEnd.hidden = false;
+      requestAnimationFrame(() => fEnd.classList.add("show"));
+      [...fBar.children].forEach(el => el.classList.add("on"));
+    }
+    function hideEnd() { fEnd.classList.remove("show"); fEnd.hidden = true; paintChrome(curD()); }
+    fGo.addEventListener("click", e => { e.stopPropagation(); const W = fW; closeF({ keepFs: true, then: () => { W.endArmed = true; goStep(W, 1); } }); });
+    fAgain.addEventListener("click", e => { e.stopPropagation(); hideEnd(); fW.hist = []; setPos(fW, { seg: fW.segs.intro ? "intro" : "main", i: 0 }, -1); showStepF(-1); });
+    fX.addEventListener("click", e => { e.stopPropagation(); closeF({}); });
+    let hintShown = false; try { hintShown = localStorage.getItem("jt-fhint") === "1"; } catch (e) {}
+    function openF(W) {
+      if (fOpen || !W) return;
+      fOpen = true; fW = W; const d = curD();
+      F.hidden = false; F.classList.remove("on"); fEnd.hidden = true; fEnd.classList.remove("show");
+      paintChrome(d); fit = layout(d); zm.k = 1; zm.x = 0; zm.y = 0;
+      const from = rect3d(), tok = ++fTok;
+      fImg.style.opacity = "0";
+      setSrc(d).then(() => {
+        if (tok !== fTok || !fOpen) return;
+        applyZ(); fImg.style.opacity = "1"; F.classList.add("on");
+        const a = from ? tf(from.x, from.y, from.w / fit.w) : tf(fit.x, fit.y + 24, 0.92);
+        const an = fImg.animate([{ transform: a, opacity: from ? 1 : 0 }, { transform: tf(fit.x, fit.y, 1), opacity: 1 }], { duration: reduce ? 0 : 560, easing: "cubic-bezier(.22,.9,.24,1)" });
+        an.onfinish = () => { if (fOpen) window.__focusCover = true; };
+      });
+      try { history.pushState({ jtFocus: 1 }, ""); } catch (e) {}
+      if (!hintShown) { hintShown = true; try { localStorage.setItem("jt-fhint", "1"); } catch (e) {} fHint.textContent = tx("Toca a la derecha para avanzar · desliza hacia abajo para salir"); fHint.hidden = false; setTimeout(() => fHint.classList.add("show"), 700); setTimeout(() => { fHint.classList.remove("show"); setTimeout(() => { fHint.hidden = true; }, 450); }, 4200); }
+    }
+    function closeF(o) {
+      o = o || {}; if (!fOpen) return;
+      fOpen = false; fTok++; window.__focusCover = false; clearTimeout(fWait);
+      if (!o.fromPop) { try { if (history.state && history.state.jtFocus) history.back(); } catch (e) {} }
+      if (!o.keepFs) leaveFs();
+      const W = fW, done = () => { F.hidden = true; F.style.opacity = ""; fImg.getAnimations().forEach(a => a.cancel()); if (reading) { setReading(false); updNav(); } if (o.then) o.then(); };
+      fEnd.classList.remove("show"); fEnd.hidden = true; F.classList.remove("on");
+      if (o.instant || reduce) { done(); return; }
+      requestAnimationFrame(() => {
+        const to = W && W.scr ? rect3d() : null;
+        const an = fImg.animate([{ transform: fImg.style.transform, opacity: 1 }, to ? { transform: tf(to.x, to.y, to.w / fit.w), opacity: 0.9 } : { transform: tf(fit.x, fit.y + 40, 0.9), opacity: 0 }], { duration: 380, easing: "cubic-bezier(.4,0,.2,1)", fill: "forwards" });
+        an.onfinish = done;
+      });
+    }
+    window.addEventListener("popstate", () => { if (fOpen) closeF({ fromPop: true }); });
+    document.addEventListener("fullscreenchange", () => { if (!document.fullscreenElement && fsByUs) { fsByUs = false; if (fOpen) closeF({}); } });
+    window.addEventListener("resize", () => { if (fOpen && fW) { fit = layout(curD()); fImg.style.width = fit.w + "px"; fImg.style.height = fit.h + "px"; zm.k = 1; zm.x = 0; zm.y = 0; applyZ(); } });
+    window.addEventListener("keydown", e => {
+      if (!fOpen) return;
+      if (e.key === "ArrowRight" || e.key === "e" || e.key === "E" || e.key === " ") { nav(1); } else if (e.key === "ArrowLeft" || e.key === "q" || e.key === "Q") { nav(-1); } else if (e.key === "Escape") { closeF({}); } else return;
+      e.preventDefault(); e.stopImmediatePropagation();
+    }, true);
+    // al entrar a leer, esperar a que la diapositiva termine de armarse en 3D y entonces acercarla
+    window.__onReading = on => {
+      clearTimeout(fWait);
+      if (!on) { if (fOpen) closeF({ instant: true }); return; }
+      const t0w = performance.now();
+      const tick = () => {
+        const W = deckW(); if (!reading || travel || !W || !W.on) return;
+        if ((W.scr && W.scr.full) || performance.now() - t0w > 2600) { openF(W); return; }
+        fWait = setTimeout(tick, 90);
+      };
+      fWait = setTimeout(tick, 120);
+    };
+    setInterval(() => { if (fOpen && (travel || !deckW())) closeF({ instant: true }); }, 250);
+    // gestos: tocar a la derecha o deslizar para avanzar, deslizar hacia abajo para salir, pellizcar para acercar
+    const pts = new Map(); let g = null;
+    F.addEventListener("pointerdown", e => {
+      if (e.target.closest("button")) return;
+      try { F.setPointerCapture(e.pointerId); } catch (er) {}
+      pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (pts.size === 2) {
+        const [a, b] = [...pts.values()], m = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+        g = { pinch: true, d0: Math.hypot(a.x - b.x, a.y - b.y) || 1, k0: zm.k, u: { x: (m.x - fit.x - zm.x) / zm.k, y: (m.y - fit.y - zm.y) / zm.k } };
+      } else if (pts.size === 1) g = { x: e.clientX, y: e.clientY, t: e.timeStamp, zx: zm.x, zy: zm.y, moved: false, pinched: false };
     });
+    F.addEventListener("pointermove", e => {
+      if (!pts.has(e.pointerId) || !g) return;
+      pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      if (g.pinch && pts.size >= 2) {
+        const [a, b] = [...pts.values()], m = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+        zm.k = Math.max(1, Math.min(3.2, g.k0 * Math.hypot(a.x - b.x, a.y - b.y) / g.d0));
+        zm.x = m.x - g.u.x * zm.k - fit.x; zm.y = m.y - g.u.y * zm.k - fit.y; clampZ(); applyZ(); return;
+      }
+      if (g.pinch) return;
+      const dx = e.clientX - g.x, dy = e.clientY - g.y;
+      if (Math.hypot(dx, dy) > 8) g.moved = true;
+      if (!g.moved || !fEnd.hidden) return;
+      if (zm.k > 1.02) { zm.x = g.zx + dx; zm.y = g.zy + dy; clampZ(); applyZ(); return; }
+      if (!g.axis) g.axis = Math.abs(dy) > Math.abs(dx) ? "y" : "x";
+      if (g.axis === "y" && dy > 0) { const k = Math.max(0.82, 1 - dy / 1600); fImg.style.transform = tf(fit.x + fit.w * (1 - k) / 2, fit.y + dy * 0.9, k); fBg.style.opacity = String(Math.max(0.35, 1 - dy / 420)); }
+      else if (g.axis === "x") fImg.style.transform = tf(fit.x + dx * 0.55, fit.y, 1);
+    });
+    const endG = e => {
+      if (!pts.has(e.pointerId)) return;
+      pts.delete(e.pointerId);
+      if (!g) return;
+      if (g.pinch) { if (pts.size === 0) { if (zm.k < 1.06) resetZ(true); g = null; } else g = { x: 0, y: 0, t: 0, moved: true, pinched: true, zx: zm.x, zy: zm.y }; return; }
+      if (pts.size) return;
+      const dx = e.clientX - g.x, dy = e.clientY - g.y, cur = g; g = null; fBg.style.opacity = "";
+      if (e.type === "pointercancel" || cur.pinched) { applyZ(); return; }
+      if (!cur.moved) {
+        if (!fEnd.hidden) { hideEnd(); return; }
+        if (zm.k > 1.02) { resetZ(true); return; }
+        nav(e.clientX < window.innerWidth * 0.33 ? -1 : 1); return;
+      }
+      if (zm.k > 1.02 || !fEnd.hidden) return;
+      if (cur.axis === "y" && dy > 90) { closeF({}); return; }
+      if (cur.axis === "x" && Math.abs(dx) > 50) { nav(dx < 0 ? 1 : -1); return; }
+      fImg.animate([{ transform: fImg.style.transform }, { transform: tf(fit.x, fit.y, 1) }], { duration: 200, easing: "ease-out" }); applyZ();
+    };
+    F.addEventListener("pointerup", endG); F.addEventListener("pointercancel", endG);
+    window.__focus = { open: () => openF(deckW()), close: () => closeF({}), next: () => nav(1), prev: () => nav(-1), state: () => ({ open: fOpen, idx: fW ? curIdx() : -1, n: fW ? PASOS[fW.id].length : 0, end: !fEnd.hidden }) };
   }
 })();
 </script>
