@@ -190,15 +190,15 @@ canvas:active{cursor:grabbing}
 #focus .fbg{position:absolute;inset:0;opacity:0;transition:opacity .4s ease,background-color .35s ease}
 #focus.on .fbg{opacity:1}
 #focus .fimg{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;will-change:transform;pointer-events:none;-webkit-user-drag:none;border-radius:2px}
-#focus .ftop{position:absolute;left:0;right:0;top:0;padding:calc(12px + env(safe-area-inset-top,0px)) calc(60px + env(safe-area-inset-right,0px)) 0 calc(14px + env(safe-area-inset-left,0px));opacity:0;transition:opacity .3s ease .2s;pointer-events:none}
+#focus .ftop{position:absolute;z-index:2;left:0;right:0;top:0;padding:calc(12px + env(safe-area-inset-top,0px)) calc(60px + env(safe-area-inset-right,0px)) 0 calc(14px + env(safe-area-inset-left,0px));opacity:0;transition:opacity .3s ease .2s;pointer-events:none}
 #focus .fbar{display:flex;gap:3px}
 #focus .fbar i{flex:1;height:3px;border-radius:2px;background:var(--fcm);transition:background-color .25s}
 #focus .fbar i.on{background:var(--fc)}
 #focus .fmeta{margin-top:9px;font:500 11px/1.25 var(--mono);letter-spacing:.06em;color:var(--fc);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #focus .fmeta b{font-weight:500;opacity:.6;margin-right:8px}
-#focus .fx{position:absolute;top:calc(2px + env(safe-area-inset-top,0px));right:calc(6px + env(safe-area-inset-right,0px));width:48px;height:48px;border:0;border-radius:50%;background:transparent;color:var(--fc);font:300 22px/1 var(--body);opacity:0;transition:opacity .3s ease .2s;cursor:pointer}
+#focus .fx{position:absolute;z-index:3;top:calc(2px + env(safe-area-inset-top,0px));right:calc(6px + env(safe-area-inset-right,0px));width:48px;height:48px;border:0;border-radius:50%;background:transparent;color:var(--fc);font:300 22px/1 var(--body);opacity:0;transition:opacity .3s ease .2s;cursor:pointer}
 #focus.on .ftop,#focus.on .fx{opacity:1}
-#focus .fend{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:32px 28px;text-align:center;color:var(--fc);opacity:0;transition:opacity .3s}
+#focus .fend{position:absolute;z-index:1;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:32px 28px;text-align:center;color:var(--fc);opacity:0;transition:opacity .3s}
 #focus .fend.show{opacity:1}
 #focus .fend[hidden]{display:none}
 #focus .fendk{margin:0;font:500 11px var(--mono);letter-spacing:.24em;text-transform:uppercase;opacity:.65}
@@ -2701,7 +2701,7 @@ canvas:active{cursor:grabbing}
       fGo.textContent = tx(tg.hist ? "Ir a Hablemos →" : tg.to === "station" ? "Volver a la estación →" : "Siguiente: " + WORLDS[tg.to].short + " →");
       fGo.style.background = acc; fGo.style.color = lum(acc) > 0.5 ? "#0B0D10" : "#FFFFFF";
       fAgain.textContent = tx("Ver desde el inicio");
-      fEnd.style.background = curD().bg + "f2"; fEnd.hidden = false;
+      fEnd.style.background = curD().bg; fEnd.hidden = false;
       requestAnimationFrame(() => fEnd.classList.add("show"));
       [...fBar.children].forEach(el => el.classList.add("on"));
     }
