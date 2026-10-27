@@ -286,7 +286,7 @@ canvas:active{cursor:grabbing}
 /* Solo en el link de prueba: muestra la versión y cualquier error en pantalla para poder revisarlo desde el celular. */
 (function () {
   if (!/-git-/.test(location.hostname) && !/[?&]debug=1/.test(location.search)) return;
-  var BUILD = "prueba 27 oct · 11:05";
+  var BUILD = "prueba 27 oct · 11:40";
   function box() { var b = document.getElementById("dbgbox"); if (!b) { b = document.createElement("div"); b.id = "dbgbox"; b.style.cssText = "position:fixed;left:8px;right:8px;bottom:8px;z-index:9999;max-height:40vh;overflow:auto;background:#B00020;color:#fff;font:12px/1.35 monospace;padding:8px 10px;border-radius:8px;white-space:pre-wrap"; document.body.appendChild(b); } return b; }
   function show(m) { try { box().textContent += m + "\n"; } catch (e) {} }
   window.addEventListener("error", function (e) { show("Error: " + e.message + " (" + (e.filename || "").split("/").pop() + ":" + e.lineno + ")"); });
@@ -1763,7 +1763,7 @@ canvas:active{cursor:grabbing}
   }
   function arrive() {
     const tr = travel; tr.swapped = true;
-    const fin = tr.hist && finaleDone, ap = fin ? { x: 0, z: histToEnd ? HB.z1 - 0.7 : WORLDS.historia.storyZ + 4.2 } : tr.hist ? { x: 0, z: histOn ? HIST_Z0 + 2.2 : HIST_Z0 - 1.0 } : tr.to === "station" ? { x: SPAWN.x, z: SPAWN.z } : ARRIVE;
+    const fin = tr.hist && finaleDone, ap = fin ? { x: histToEnd || !WORLDS.historia.photo ? 0 : WORLDS.historia.photo.x, z: histToEnd ? HB.z1 - 0.7 : WORLDS.historia.storyZ + 4.2 } : tr.hist ? { x: 0, z: histOn ? HIST_Z0 + 2.2 : HIST_Z0 - 1.0 } : tr.to === "station" ? { x: SPAWN.x, z: SPAWN.z } : ARRIVE;
     pos.set(ap.x, ap.z); yaw = tr.hist && !fin ? 0 : Math.PI; CAM.off = 0; CAM.pitch = fin ? 0.62 : 0.22; CAM.dist = fin ? 13 : DIST0 + 0.5;
     enterWorld(tr.to);
     updWhere("Llegando a " + (tr.hist ? "Mi historia" : WORLDS[tr.to].label));
