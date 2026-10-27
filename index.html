@@ -119,7 +119,7 @@ canvas:active{cursor:grabbing}
 .cpanel .cgo:hover{filter:brightness(1.08)}
 .cpanel .cnote{grid-column:1 / span 2;font:500 11px var(--mono);color:var(--niebla);margin-top:4px}
 @media (prefers-reduced-motion: reduce){.cpanel{animation:none}}
-@media (pointer:coarse){.cpanel{bottom:calc(262px + env(safe-area-inset-bottom,0px));padding:10px 10px 10px 14px}.cpanel .cnote{display:none}.cpanel .cv{font-size:13px}.cpanel .cgo{padding:0 12px;font-size:13px}}
+@media (pointer:coarse){.cpanel{bottom:calc(18px + env(safe-area-inset-bottom,0px));padding:10px 10px 10px 14px}.cpanel .cnote{display:none}.cpanel .cv{font-size:13px}.cpanel .cgo{padding:0 12px;font-size:13px}}
 @media (pointer:coarse){.radio{bottom:auto;top:calc(150px + env(safe-area-inset-top,0px));gap:6px;padding:8px}.radio .rnote,.radio .tape{display:none}.radio .rplay{min-height:38px}}
 .toast{z-index:6}
 @media (prefers-reduced-motion: reduce){.radio .rdot,.radio .tape i{animation:none}}
@@ -286,7 +286,7 @@ canvas:active{cursor:grabbing}
 /* Solo en el link de prueba: muestra la versión y cualquier error en pantalla para poder revisarlo desde el celular. */
 (function () {
   if (!/-git-/.test(location.hostname) && !/[?&]debug=1/.test(location.search)) return;
-  var BUILD = "prueba 27 oct · 11:40";
+  var BUILD = "prueba 27 oct · 14:30";
   function box() { var b = document.getElementById("dbgbox"); if (!b) { b = document.createElement("div"); b.id = "dbgbox"; b.style.cssText = "position:fixed;left:8px;right:8px;bottom:8px;z-index:9999;max-height:40vh;overflow:auto;background:#B00020;color:#fff;font:12px/1.35 monospace;padding:8px 10px;border-radius:8px;white-space:pre-wrap"; document.body.appendChild(b); } return b; }
   function show(m) { try { box().textContent += m + "\n"; } catch (e) {} }
   window.addEventListener("error", function (e) { show("Error: " + e.message + " (" + (e.filename || "").split("/").pop() + ":" + e.lineno + ")"); });
@@ -2074,6 +2074,16 @@ canvas:active{cursor:grabbing}
     }
     D *= zoom; outPos.set(outLook.x, Math.sin(el) * D, outLook.z - fz * Math.cos(el) * D);
   }
+  // En el celular, al llegar a Hablemos la cámara encuadra la tarjeta de contacto al ancho de la pantalla
+  const talkPos = new THREE.Vector3(), talkLook = new THREE.Vector3(); let talkKey = "";
+  function talkCard() { const S = WORLDS.historia.scr; if (!HB || !S) return null; const h = S.hT || 7; return { x0: -SCR.w / 2, x1: SCR.w / 2, z0: HB.gz - h, z1: HB.gz }; }
+  function inTalk() { if (!coarse.matches || world !== "station" || !finaleDone || finale || reading || travel) return false; const c = talkCard(); return !!c && pos.y > c.z0 - 0.6; }
+  window.__talk = () => ({ on: inTalk(), py: +pos.y.toFixed(2), card: talkCard(), tp: talkPos.toArray().map(v => +v.toFixed(1)), tl: talkLook.toArray().map(v => +v.toFixed(1)), eff: effPrev, done: finaleDone, view: finaleView, world, ndc: (() => { const c = talkCard(); if (!c) return null; return [[c.x0, c.z0], [c.x1, c.z0], [c.x0, c.z1], [c.x1, c.z1]].map(q => { const v = new THREE.Vector3(q[0], TOP, q[1]).project(camera); return [+v.x.toFixed(2), +v.y.toFixed(2)]; }); })() });
+  function talkPose() {
+    const c = talkCard(), key = camera.aspect.toFixed(3) + "|" + (c ? c.z0.toFixed(2) : "-"); if (!c || key === talkKey) return; talkKey = key;
+    // los puntos de abajo dejan espacio para el panel de contacto sin mover la cámara cuando aparece
+    fitAerial([[c.x0, 0, c.z0], [c.x1, 0, c.z0], [c.x0, 0, c.z1], [c.x1, 0, c.z1], [c.x0 * 0.5, 0, c.z1 + 1.5], [c.x1 * 0.5, 0, c.z1 + 1.5]], (c.z0 + c.z1) / 2, -1, 1.32, 0.9, talkPos, talkLook);
+  }
   // ---------- Entrada: al nacer Cubo, una grúa arma la página completa (solo la primera vez en cada navegador) ----------
   // logo → proyectos y mi historia → Hablemos; luego vuelve a Cubo, que mira hacia los proyectos
   let finale = null, finaleDone = false, finaleView = false, HB = null, crane = null, finKey = "", skipBuild = false, introShown = false;
@@ -2542,7 +2552,7 @@ canvas:active{cursor:grabbing}
       camera.lookAt(lookTmp); lookNow.copy(lookTmp);
     } else {
       camera.up.set(0, 1, 0);
-      const eff = travel ? 0 : (finale || finaleView) ? 4 : camMode;
+      const eff = travel ? 0 : (finale || finaleView) ? 4 : inTalk() ? 5 : camMode;
       if (eff !== effPrev) { camFrom.copy(camera.position); lookFrom.copy(lookNow); camSm.copy(camera.position); lookSm.copy(lookNow); camModeT = now; effPrev = eff; }
       lookCur.lerp(new THREE.Vector3(pos.x, 1.05 + (hero.position.y - TOP) * (travel ? 0.85 : 0.3), pos.y), Math.min(1, dt * (travel ? 4 : 6)));
       camCur.yaw += angDiff(camCur.yaw, yaw + Math.PI + CAM.off) * Math.min(1, dt * 7);
@@ -2557,6 +2567,7 @@ canvas:active{cursor:grabbing}
       } else {
         let rate = 3.2;
         if (eff === 4) { finalePose(); camT.copy(finPos); lookT.copy(finLook); rate = finale ? 3.2 : 1.6; }
+        else if (eff === 5) { talkPose(); camT.copy(talkPos); lookT.copy(talkLook); rate = 2.4; }
         else if (eff === 1) { aerialPose(zoom); camT.copy(aerPos); lookT.copy(aerLook); rate = 2.6; }
         else if (eff === 2) {
           droneA += dt * 0.3; const R = 6.4 * zoom, a = droneA + CAM.off, hy = TOP + 1.3 + R * (0.42 + (CAM.pitch - 0.2) * 0.9);
@@ -2867,7 +2878,7 @@ canvas:active{cursor:grabbing}
     const ctaState = () => {
       if (travel || finale || reading || FOC.isOpen() || !isLive() || stage.classList.contains("intro")) return null;
       if (world === "station") {
-        if (!histOn || !histPads.length) return null;
+        if (!histOn || !histPads.length || inTalk()) return null;
         const rec = nextWorld();
         if (rec) { const p = histPads.find(q => q.to === rec); if (p) return { t: "Entrar a " + WORLDS[rec].short + " →", f: () => { if (!travel) startTravel(rec, p.x, p.z, null); } }; }
         if (!storySeen && finaleDone) return { t: "Ver mi historia ▶", f: () => { FOC.wantFs(); FOC.openStory(); } };
